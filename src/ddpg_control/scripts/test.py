@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from std_msgs.msg import Float32
-from environment import Env
+from environments import Env
 import rospy
 
 def reset_callback(data):
