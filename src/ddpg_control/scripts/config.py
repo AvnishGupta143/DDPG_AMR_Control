@@ -2,6 +2,7 @@ exploration_decay_rate = 0.001
 
 MAX_EPISODES = 10001
 MAX_STEPS = 1000
+WAIT_STEPS = 4 * MAX_STEPS
 MAX_BUFFER = 200000
 rewards_all_episodes = []
 
