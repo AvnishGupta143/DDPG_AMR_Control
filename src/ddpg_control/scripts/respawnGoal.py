@@ -27,7 +27,7 @@ from geometry_msgs.msg import Pose
 
 class Respawn():
     def __init__(self):
-        self.f = open(os.path.expanduser('~') + '/DDPG_AMR_Control/src/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_square/goal_box/model.sdf', 'r')
+        self.f = open(os.path.expanduser('~') + '/DDPG_AMR_Control1/src/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_square/goal_box/model.sdf', 'r')
         self.model = self.f.read()
         self.stage = 1 
         self.goal_position = Pose()
@@ -59,8 +59,7 @@ class Respawn():
                 rospy.wait_for_service('gazebo/spawn_sdf_model')
                 spawn_model_prox = rospy.ServiceProxy('gazebo/spawn_sdf_model', SpawnModel)
                 spawn_model_prox(self.modelName, self.model, 'robotos_name_space', self.goal_position, "world")
-                rospy.loginfo("Goal position : %.1f, %.1f", self.goal_position.position.x,
-                              self.goal_position.position.y)
+                rospy.loginfo("Goal position : %.1f, %.1f", self.goal_position.position.x, self.goal_position.position.y)
                 break
             else:
                 pass

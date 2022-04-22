@@ -55,8 +55,6 @@ class Env():
         rospy.on_shutdown(self.shutdown)
 
     def shutdown(self):
-        #you can stop turtlebot by publishing an empty Twist
-        #message
         rospy.loginfo("Stopping TurtleBot")
         self.pub_cmd_vel.publish(Twist())
         rospy.sleep(1)
@@ -75,12 +73,10 @@ class Env():
         _, _, yaw = euler_from_quaternion(orientation_list)
 
         goal_angle = math.atan2(self.goal_y - self.position.y, self.goal_x - self.position.x)
-
-        #print 'yaw', yaw
-        #print 'gA', goal_angle
-
         heading = goal_angle - yaw
-        #print 'heading', heading
+        
+        #print(f'yaw {yaw} | Goal Angle {goal_angle} | Heading {heading}')
+        
         if heading > pi:
             heading -= 2 * pi
 
@@ -197,13 +193,14 @@ class Env():
         return np.asarray(state), reward, done
 
     def reset(self):
-        #print('aqui2_____________---')
+        print("waiting for service")
         rospy.wait_for_service('gazebo/reset_simulation')
         try:
             self.reset_proxy()
         except (rospy.ServiceException) as e:
             print("gazebo/reset_simulation service call failed")
 
+        print("reset called")
         data = None
         while data is None:
             try:
@@ -219,6 +216,7 @@ class Env():
 
         self.goal_distance = self.getGoalDistace()
         state, _ = self.getState(data, [0]*self.action_dim)
-
+        
+        print(self.goal_x, self.goal_y)
         return np.asarray(state)
 

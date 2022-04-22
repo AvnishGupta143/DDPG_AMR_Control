@@ -4,8 +4,6 @@ import rospy
 import os
 import sys
 
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-
 from std_msgs.msg import Float32
 import torch
 import torch.nn.functional as F
@@ -13,10 +11,6 @@ import torch.nn.functional as F
 # Local imports
 from models import Actor, Critic
 import config
-
-# ---Directory Path---#
-dirPath = os.path.dirname(os.path.realpath(__file__))
-
 
 # ---Functions to make network updates---#
 
@@ -29,48 +23,39 @@ def hard_update(target, source):
     for target_param, param in zip(target.parameters(), source.parameters()):
         target_param.data.copy_(param.data)
 
-
 class DDPGAgent:
 
-    def __init__(self, state_dim, action_dim, action_limit_v, action_limit_w, memory_buffer):
+    def __init__(self, state_dim, action_dim, action_v_max, action_w_max, memory_buffer, path_save = "models", path_load = "models"):
         self.state_dim = state_dim
         self.action_dim = action_dim
-        self.action_limit_v = action_limit_v
-        self.action_limit_w = action_limit_w
-        # print('w',self.action_limit_w)
+        self.action_v_max = action_v_max
+        self.action_w_max = action_w_max
+        # print('w',self.action_w_max)
         self.memory_buffer = memory_buffer
         # self.iter = 0
 
-        self.actor = Actor(self.state_dim, self.action_dim, self.action_limit_v, self.action_limit_w)
-        self.target_actor = Actor(self.state_dim, self.action_dim, self.action_limit_v, self.action_limit_w)
+        self.actor = Actor(self.state_dim, self.action_dim, self.action_v_max, self.action_w_max)
+        self.target_actor = Actor(self.state_dim, self.action_dim, self.action_v_max, self.action_w_max)
         self.actor_optimizer = torch.optim.Adam(self.actor.parameters(), config.LEARNING_RATE)
 
         self.critic = Critic(self.state_dim, self.action_dim)
         self.target_critic = Critic(self.state_dim, self.action_dim)
         self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), config.LEARNING_RATE)
+        
         self.pub_qvalue = rospy.Publisher('qvalue', Float32, queue_size=5)
+        
         self.qvalue = Float32()
+        self.path_save = path_save
+        self.path_load = path_load
 
         hard_update(self.target_actor, self.actor)
         hard_update(self.target_critic, self.critic)
 
-    def get_exploitation_action(self, state):
+    def get_action(self, state):
         state = torch.from_numpy(state)
         action = self.actor.forward(state).detach()
         # print('actionploi', action)
         return action.data.numpy()
-
-    def get_exploration_action(self, state):
-        state = torch.from_numpy(state)
-        action = self.actor.forward(state).detach()
-        # noise = self.noise.sample()
-        # print('noisea', noise)
-        # noise[0] = noise[0]*self.action_limit_v
-        # noise[1] = noise[1]*self.action_limit_w
-        # print('noise', noise)
-        new_action = action.data.numpy()  # + noise
-        # print('action_no', new_action)
-        return new_action
 
     def optimizer(self):
         s_sample, a_sample, r_sample, new_s_sample, done_sample = self.memory_buffer.sample(config.BATCH_SIZE)
@@ -107,24 +92,25 @@ class DDPGAgent:
         self.actor_optimizer.zero_grad()
         loss_actor.backward()
         self.actor_optimizer.step()
-
+        
+    def update_target(self):
         soft_update(self.target_actor, self.actor, config.TAU)
         soft_update(self.target_critic, self.critic, config.TAU)
 
-    def save_models(self, episode_count):
-        torch.save(self.target_actor.state_dict(),
-                   dirPath + '/Models/' + config.world + '/' + str(episode_count) + '_actor.pt')
-        torch.save(self.target_critic.state_dict(),
-                   dirPath + '/Models/' + config.world + '/' + str(episode_count) + '_critic.pt')
+    def save_models(self, episode):
+        if not os.path.isdir(f"{self.path_save}/save_agent_{episode}"):
+            os.makedirs(f"{self.path_save}/save_agent_{episode}")
+        
+        torch.save(self.target_actor.state_dict(), f"{self.path_save}/save_agent_{episode}/actor.pt")
+        torch.save(self.target_critic.state_dict(), f"{self.path_save}/save_agent_{episode}/critic.pt")
         print('****Models saved***')
 
     def load_models(self, episode):
-        self.actor.load_state_dict(torch.load(dirPath + '/Models/' + config.world + '/' + str(episode) + '_actor.pt'))
-        self.critic.load_state_dict(torch.load(dirPath + '/Models/' + config.world + '/' + str(episode) + '_critic.pt'))
+        self.actor.load_state_dict(torch.load(f"{self.path_load}/save_agent_{episode}/actor.pt"))
+        self.critic.load_state_dict(torch.load(f"{self.path_load}/save_agent_{episode}/critic.pt"))
         hard_update(self.target_actor, self.actor)
         hard_update(self.target_critic, self.critic)
         print('***Models load***')
-
 
 # ---Mish Activation Function---#
 def mish(x):

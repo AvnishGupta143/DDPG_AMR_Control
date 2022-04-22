@@ -19,7 +19,7 @@ class Critic(nn.Module):
     def __init__(self, state_dim, action_dim):
         super(Critic, self).__init__()
 
-        self.state_dim = state_dim = state_dim
+        self.state_dim = state_dim
         self.action_dim = action_dim
 
         self.fc1 = nn.Linear(state_dim, 125)
@@ -56,12 +56,12 @@ class Actor(nn.Module):
     # ---Actor---
     """
 
-    def __init__(self, state_dim, action_dim, action_limit_v, action_limit_w):
+    def __init__(self, state_dim, action_dim, action_v_max, action_w_max):
         super(Actor, self).__init__()
-        self.state_dim = state_dim = state_dim
+        self.state_dim = state_dim
         self.action_dim = action_dim
-        self.action_limit_v = action_limit_v
-        self.action_limit_w = action_limit_w
+        self.action_v_max = action_v_max
+        self.action_w_max = action_w_max
 
         self.fa1 = nn.Linear(state_dim, 250)
         nn.init.xavier_uniform_(self.fa1.weight)
@@ -83,9 +83,9 @@ class Actor(nn.Module):
         x = torch.relu(self.fa2(x))
         action = self.fa3(x)
         if state.shape <= torch.Size([self.state_dim]):
-            action[0] = torch.sigmoid(action[0]) * self.action_limit_v
-            action[1] = torch.tanh(action[1]) * self.action_limit_w
+            action[0] = torch.sigmoid(action[0]) * self.action_v_max
+            action[1] = torch.tanh(action[1]) * self.action_w_max
         else:
-            action[:, 0] = torch.sigmoid(action[:, 0]) * self.action_limit_v
-            action[:, 1] = torch.tanh(action[:, 1]) * self.action_limit_w
+            action[:, 0] = torch.sigmoid(action[:, 0]) * self.action_v_max
+            action[:, 1] = torch.tanh(action[:, 1]) * self.action_w_max
         return action
