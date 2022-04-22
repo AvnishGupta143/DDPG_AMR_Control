@@ -14,16 +14,17 @@ import wandb
 
 def init_plotting():
     conf = dict(
-        learning_rate_actor = ACTOR_LR,
-        learning_rate_critic = CRITIC_LR,
-        batch_size = BATCH_SIZE,
+        learning_rate_actor = conf.ACTOR_LR,
+        learning_rate_critic = conf.CRITIC_LR,
+        batch_size = conf.BATCH_SIZE,
         architecture = "DDPG",
         infra = "Ubuntu",
-        env = ENV_NAME
+        env = "ddpg"
     )
 
     wandb.init(
-        project = "pytorch_turtlebot_ddpg",
+        project = "ddpg_turtlebot",
+        entity="avnishgupta",
         tags = ["DDPG", "TURTLEBOT", "RL"],
         config = conf,
     )
