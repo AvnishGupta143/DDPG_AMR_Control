@@ -9,18 +9,33 @@ from mem_buffer import MemoryBuffer
 from environments import Env
 from agents import DDPGAgent
 import config
+from colorama import Fore, Style
+import wandb
 
+def init_plotting():
+    conf = dict(
+        learning_rate_actor = ACTOR_LR,
+        learning_rate_critic = CRITIC_LR,
+        batch_size = BATCH_SIZE,
+        architecture = "DDPG",
+        infra = "Ubuntu",
+        env = ENV_NAME
+    )
+
+    wandb.init(
+        project = "pytorch_turtlebot_ddpg",
+        tags = ["DDPG", "TURTLEBOT", "RL"],
+        config = conf,
+    )
+    
+    wandb.define_metric("steps")
+    wabdb.define_metric("episodes")
+    wandb.define_metric("critic_loss", step_metric = "steps")
+    wandb.define_metric("average_reward", step_metric = "episodes")
+    wandb.define_metric("episode_reward", step_metric = "episodes")
 
 def run_training():
-    is_training = True
-
-    #if is_training:
-    #    var_v = config.ACTION_V_MAX * .5
-    #    var_w = config.ACTION_W_MAX * 2 * .5
-    ##else:
-    #    var_v = config.ACTION_V_MAX * 0.10
-    #    var_w = config.ACTION_W_MAX * 0.10
-
+    global pub_average_reward, pub_episode_reward
     print('State Dimensions: ' + str(config.STATE_DIMENSION))
     print('Action Dimensions: ' + str(config.ACTION_DIMENSION))
     print('Action Max: ' + str(config.ACTION_V_MAX) + ' m/s and ' + str(config.ACTION_W_MAX) + ' rad/s')
@@ -37,94 +52,83 @@ def run_training():
                     max_sigma = 0.1, 
                     min_sigma = 0.1, 
                     decay_period = 100000)
-                    
-    # agent.load_models(4880)
-    
-    pub_result = rospy.Publisher('result', Float32, queue_size=5)
-    result = Float32()
     
     env = Env(action_dim = config.ACTION_DIMENSION)
-    
     rewards_all_episodes = []
+    steps = 0
     
     for ep in range(config.MAX_EPISODES):
-        if is_training:
-            print('---------------------------------')
-            print('Episode: ' + str(ep) + ' training')
-            print('---------------------------------')
-        else:
-            if memory_buffer.len >= config.WAIT_STEPS:
-                print('---------------------------------')
-                print('Episode: ' + str(ep) + ' evaluating')
-                print('---------------------------------')
-            else:
-                print('---------------------------------')
-                print('Episode: ' + str(ep) + ' adding to memory')
-                print('---------------------------------')
-        
+        print(f"---------------------- EPISODE {ep + 1} --------------------")
         done = False
         state = env.reset()
         rewards_current_episode = 0.0
         past_action = np.zeros(config.ACTION_DIMENSION)
+        episode_steps = 0
 
-        for step in range(config.MAX_STEPS):
-            print("step " , step)
+        while not done:
+            steps += 1
+            episode_steps += 1
             state = np.float32(state)
-
             action = agent.get_action(state)
-            if is_training: #and not ep % 10 == 0
-                N = copy.deepcopy(noise.get_noise(t = step))
-                
-                N[0] = N[0] * config.ACTION_V_MAX / 2
-                N[1] = N[1] * config.ACTION_W_MAX
-                
-                action[0] = np.clip(action[0] + N[0], 0., config.ACTION_V_MAX)
-                action[1] = np.clip(action[1] + N[1], -config.ACTION_W_MAX, config.ACTION_W_MAX)
+            
+            N = copy.deepcopy(noise.get_noise(t = step))
+            N[0] = N[0] * config.ACTION_V_MAX / 2
+            N[1] = N[1] * config.ACTION_W_MAX
+            action[0] = np.clip(action[0] + N[0], 0., config.ACTION_V_MAX)
+            action[1] = np.clip(action[1] + N[1], -config.ACTION_W_MAX, config.ACTION_W_MAX)
                 
             next_state, reward, done = env.step(action, past_action)
-            past_action = copy.deepcopy(action)
             rewards_current_episode += reward
             next_state = np.float32(next_state)
-            
-#            if not ep % 10 == 0 or not memory_buffer.len >= config.WAIT_STEPS:
-#                if reward == 100.:
-#                    print('***\n-------- Maximum Reward ----------\n****')
-#                    for _ in range(3):
-#                        memory_buffer.add(state, action, reward, next_state, done)
-#                 elif reward == -100.:
-#                     print('***\n-------- Collision ----------\n****')
-#                     for _ in range():
-
             memory_buffer.add(state, action, reward, next_state, done)
-
-#                else:
-#                    memory_buffer.add(state, action, reward, next_state, done)
-
             state = copy.deepcopy(next_state)
-
-            if memory_buffer.len >= config.WAIT_STEPS and is_training:
-                agent.optimizer()
-                
-            if(ep % config.NETWORK_UPDATE == 0):
+            
+            print("step: {} | reward: {} | done: {} | action: {},{}".format(steps, reward, done, action[0], action[1])
+            
+            past_action = copy.deepcopy(action)
+            
+            if(steps % config.LEARN_RATE == 0 and steps > config.MIN_SIZE_BUFFER):
+                for i in range(20):
+                    agent.learn()
+                    print(f"{Fore.BLUE}-------------------- Agent Learning ---------------{Style.RESET_ALL}")
+                    
+            if config.MAX_STEPS <= episode_steps:
+                done = True
+            
+            if(steps % config.TARGET_UPDATE_RATE == 0 and steps > config.MIN_SIZE_BUFFER):
                 agent.update_target()
+                print(f"{Fore.RED}-------------------- Updating Target Networks ---------------{Style.RESET_ALL}")
+                
+            if (steps % SAVE_FREQUENCY and steps > config.MIN_SIZE_BUFFER == 0):
+                agent.save(steps)
+                print(f"{Fore.GREEN}-------------------- SAVING THE MODEL ---------------{Style.RESET_ALL}")
+                
+            wandb.log({'steps': steps, 'critic_loss': agent.get_critic_loss()}, commit=False)
 
-            if done or step == config.MAX_STEPS - 1:
-                print('reward per ep: ' + str(rewards_current_episode))
-                print('*\nbreak step: ' + str(step) + '\n*')
-                print('sigma: ' + str(noise.sigma))
-                rewards_all_episodes.append(rewards_current_episode)
-                if not ep % 10 == 0:
-                    pass
-                else:
-                    result = rewards_current_episode
-                    pub_result.publish(result)
-                break
-        if ep % config.SAVE_STEPS == 0:
-            agent.save_models(ep)
-    
+        rewards_all_episodes.append(rewards_current_episode)
+        
+        # episode_reward_msg = Float32()
+        # episode_reward_msg.data = rewards_current_episode
+        # pub_episode_reward.publish(episode_reward_msg)
+        
+        avg_reward = np.mean(rewards_all_episodes[max(0, ep - 100):(ep + 1)])
+        # avg_reward_msg = Float32()
+        # avg_reward_msg.data = avg_reward
+        # pub_average_reward.publish(avg_reward_msg)
+        
+        wandb.log({"episodes": ep,
+                   "episode_reward": rewards_current_episode,
+                   "average_reward": avg_reward})
+        
+        print("------------------------------------- EPISODE END -----------------------------------------".format(ep + 1))
+        
     print('Completed Training')
-
+    print("saving...")
+    agent.save(steps)
+    print("saved")
 
 if __name__ == '__main__':
-    rospy.init_node('ddpg_stage_1')
+    rospy.init_node('ddpg_train')
+    pub_episode_reward = rospy.Publisher('episode_reward', Float32, queue_size=5)
+    pub_average_reward = rospy.Publisher('average_reward', Float32, queue_size=5)
     run_training()

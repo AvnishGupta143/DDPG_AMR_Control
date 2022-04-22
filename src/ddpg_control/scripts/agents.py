@@ -30,23 +30,22 @@ class DDPGAgent:
         self.action_dim = action_dim
         self.action_v_max = action_v_max
         self.action_w_max = action_w_max
-        # print('w',self.action_w_max)
         self.memory_buffer = memory_buffer
-        # self.iter = 0
 
         self.actor = Actor(self.state_dim, self.action_dim, self.action_v_max, self.action_w_max)
         self.target_actor = Actor(self.state_dim, self.action_dim, self.action_v_max, self.action_w_max)
-        self.actor_optimizer = torch.optim.Adam(self.actor.parameters(), config.LEARNING_RATE)
+        self.actor_optimizer = torch.optim.Adam(self.actor.parameters(), config.ACTOR_LR)
 
         self.critic = Critic(self.state_dim, self.action_dim)
         self.target_critic = Critic(self.state_dim, self.action_dim)
-        self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), config.LEARNING_RATE)
+        self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), config.CRITIC_LR)
         
         self.pub_qvalue = rospy.Publisher('qvalue', Float32, queue_size=5)
         
         self.qvalue = Float32()
         self.path_save = path_save
         self.path_load = path_load
+        self.critic_loss = -1
 
         hard_update(self.target_actor, self.actor)
         hard_update(self.target_critic, self.critic)
@@ -54,10 +53,9 @@ class DDPGAgent:
     def get_action(self, state):
         state = torch.from_numpy(state)
         action = self.actor.forward(state).detach()
-        # print('actionploi', action)
         return action.data.numpy()
 
-    def optimizer(self):
+    def learn(self):
         s_sample, a_sample, r_sample, new_s_sample, done_sample = self.memory_buffer.sample(config.BATCH_SIZE)
 
         s_sample = torch.from_numpy(s_sample)
@@ -80,6 +78,7 @@ class DDPGAgent:
         # print(self.qvalue, torch.max(self.qvalue))
         # ----------------------------
         loss_critic = F.smooth_l1_loss(y_predicted, y_expected)
+        self.critic_loss = loss_critic
 
         self.critic_optimizer.zero_grad()
         loss_critic.backward()
@@ -92,6 +91,9 @@ class DDPGAgent:
         self.actor_optimizer.zero_grad()
         loss_actor.backward()
         self.actor_optimizer.step()
+        
+    def get_critic_loss(self):
+        return self.critic_loss
         
     def update_target(self):
         soft_update(self.target_actor, self.actor, config.TAU)

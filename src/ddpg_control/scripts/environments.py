@@ -75,8 +75,6 @@ class Env():
         goal_angle = math.atan2(self.goal_y - self.position.y, self.goal_x - self.position.x)
         heading = goal_angle - yaw
         
-        #print(f'yaw {yaw} | Goal Angle {goal_angle} | Heading {heading}')
-        
         if heading > pi:
             heading -= 2 * pi
 
@@ -107,7 +105,7 @@ class Env():
             scan_range.append(pa)
 
         current_distance = round(math.hypot(self.goal_x - self.position.x, self.goal_y - self.position.y),2)
-        # current_distance = self.getGoalDistace()
+
         if current_distance < 0.15:
             self.get_goalbox = True
 

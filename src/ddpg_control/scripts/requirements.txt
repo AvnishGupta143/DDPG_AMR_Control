@@ -1,0 +1,5 @@
+wandb
+colorma
+torch==1.6
+roskpg
+numpy
