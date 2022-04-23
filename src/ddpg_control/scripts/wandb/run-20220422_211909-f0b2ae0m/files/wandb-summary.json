@@ -1,0 +1,1 @@
+{"steps": 1477, "critic_loss": 899341696.0, "_timestamp": 1650677113, "_runtime": 363, "episodes": 14, "episode_reward": -78.00000000000003, "average_reward": -165.46666666666675, "_step": 14, "_wandb": {"runtime": 365}}

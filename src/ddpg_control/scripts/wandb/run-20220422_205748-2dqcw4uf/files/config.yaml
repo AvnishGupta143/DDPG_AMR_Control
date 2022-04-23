@@ -1,0 +1,40 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.12.15
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.8.10
+    start_time: 1650675468
+    t:
+      1:
+      - 1
+      - 55
+      3:
+      - 15
+      - 16
+      4: 3.8.10
+      5: 0.12.15
+      8:
+      - 5
+architecture:
+  desc: null
+  value: DDPG
+batch_size:
+  desc: null
+  value: 256
+env:
+  desc: null
+  value: ddpg
+infra:
+  desc: null
+  value: Ubuntu
+learning_rate_actor:
+  desc: null
+  value: 0.001
+learning_rate_critic:
+  desc: null
+  value: 0.005

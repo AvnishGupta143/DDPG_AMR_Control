@@ -62,7 +62,6 @@ class Env():
     def getGoalDistace(self):
         goal_distance = round(math.hypot(self.goal_x - self.position.x, self.goal_y - self.position.y), 2)
         self.past_distance = goal_distance
-
         return goal_distance
 
     def getOdometry(self, odom):
@@ -111,52 +110,78 @@ class Env():
 
         return scan_range + [heading, current_distance], done
 
+    def setRewardContinous(self, state, done):
+        current_distance = state[-1]
+        heading = state[-2]
+        reward = 0
+        distance_rate = (self.past_distance - current_distance) 
+        reward += 200. * distance_rate
+        self.past_distance = current_distance
+        
+        reward += pi/2.0 - abs(heading)
+
+        a, b, c, d = float('{0:.3f}'.format(self.position.x)), float('{0:.3f}'.format(self.past_position.x)), float('{0:.3f}'.format(self.position.y)), float('{0:.3f}'.format(self.past_position.y))
+        if a == b and c == d:
+            self.stopped += 1
+            if self.stopped == 20:
+                rospy.loginfo('Robot is in the same state 20 times in a row')
+                self.stopped = 0
+                done = True
+        else:
+            self.stopped = 0
+
+        if done:
+            rospy.loginfo("Collision!!")
+            reward = -5.0
+            self.pub_cmd_vel.publish(Twist())
+
+        if self.get_goalbox:
+            rospy.loginfo("Goal!!")
+            done = True
+            reward = 10
+            self.pub_cmd_vel.publish(Twist())
+            if world:
+                self.goal_x, self.goal_y = self.respawn_goal.getPosition(True, delete=True, running=True)
+                if target_not_movable:
+                    self.reset()
+            else:
+                self.goal_x, self.goal_y = self.respawn_goal.getPosition(True, delete=True)
+            self.goal_distance = self.getGoalDistace()
+            self.get_goalbox = False
+
+        return reward, done
+
     def setReward(self, state, done):
         current_distance = state[-1]
         heading = state[-2]
-        #print('cur:', current_distance, self.past_distance)
-
 
         distance_rate = (self.past_distance - current_distance) 
         if distance_rate > 0:
             reward = 200.*distance_rate
-            # reward = 0.
-
-        # if distance_rate == 0:
-        #     reward = 0.
 
         if distance_rate <= 0:
             reward = -8.
-            # reward = 0.
 
-        #angle_reward = math.pi - abs(heading)
-        #print('d', 500*distance_rate)
-        #reward = 500.*distance_rate #+ 3.*angle_reward
         self.past_distance = current_distance
 
         a, b, c, d = float('{0:.3f}'.format(self.position.x)), float('{0:.3f}'.format(self.past_position.x)), float('{0:.3f}'.format(self.position.y)), float('{0:.3f}'.format(self.past_position.y))
         if a == b and c == d:
-            # rospy.loginfo('\n<<<<<Stopped>>>>>\n')
-            # print('\n' + str(a) + ' ' + str(b) + ' ' + str(c) + ' ' + str(d) + '\n')
             self.stopped += 1
             if self.stopped == 20:
                 rospy.loginfo('Robot is in the same 20 times in a row')
                 self.stopped = 0
                 done = True
         else:
-            # rospy.loginfo('\n>>>>> not stopped>>>>>\n')
             self.stopped = 0
 
         if done:
             rospy.loginfo("Collision!!")
-            # reward = -500.
             reward = -10.
             self.pub_cmd_vel.publish(Twist())
 
         if self.get_goalbox:
             rospy.loginfo("Goal!!")
             done=True
-            # reward = 500.
             reward = 100.
             self.pub_cmd_vel.publish(Twist())
             if world:
@@ -187,8 +212,7 @@ class Env():
                 pass
 
         state, done = self.getState(data, past_action)
-        reward, done = self.setReward(state, done)
-
+        reward, done = self.setRewardContinous(state, done)
         return np.asarray(state), reward, done
 
     def reset(self):

@@ -1,0 +1,286 @@
+2022-04-22 21:11:10,168 INFO    MainThread:143050 [internal.py:wandb_internal():90] W&B internal server running at pid: 143050, started at: 2022-04-22 21:11:10.168090
+2022-04-22 21:11:10,171 INFO    WriterThread:143050 [datastore.py:open_for_write():75] open: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/run-ct8t5g2s.wandb
+2022-04-22 21:11:10,172 DEBUG   SenderThread:143050 [sender.py:send():232] send: header
+2022-04-22 21:11:10,173 DEBUG   SenderThread:143050 [sender.py:send():232] send: run
+2022-04-22 21:11:10,348 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: check_version
+2022-04-22 21:11:10,349 INFO    SenderThread:143050 [dir_watcher.py:__init__():166] watching files in: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files
+2022-04-22 21:11:10,350 INFO    SenderThread:143050 [sender.py:_start_run_threads():811] run started: ct8t5g2s with start time 1650676269
+2022-04-22 21:11:10,350 DEBUG   SenderThread:143050 [sender.py:send():232] send: summary
+2022-04-22 21:11:10,350 INFO    SenderThread:143050 [sender.py:_save_file():946] saving file wandb-summary.json with policy end
+2022-04-22 21:11:10,351 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: check_version
+2022-04-22 21:11:10,497 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: run_start
+2022-04-22 21:11:10,503 DEBUG   HandlerThread:143050 [meta.py:__init__():35] meta init
+2022-04-22 21:11:10,503 DEBUG   HandlerThread:143050 [meta.py:__init__():49] meta init done
+2022-04-22 21:11:10,504 DEBUG   HandlerThread:143050 [meta.py:probe():209] probe
+2022-04-22 21:11:10,511 DEBUG   HandlerThread:143050 [meta.py:_setup_git():199] setup git
+2022-04-22 21:11:10,535 DEBUG   HandlerThread:143050 [meta.py:_setup_git():206] setup git done
+2022-04-22 21:11:10,535 DEBUG   HandlerThread:143050 [meta.py:_save_pip():53] save pip
+2022-04-22 21:11:10,535 DEBUG   HandlerThread:143050 [meta.py:_save_pip():67] save pip done
+2022-04-22 21:11:10,536 DEBUG   HandlerThread:143050 [meta.py:probe():247] probe done
+2022-04-22 21:11:10,611 DEBUG   SenderThread:143050 [sender.py:send():232] send: files
+2022-04-22 21:11:10,612 INFO    SenderThread:143050 [sender.py:_save_file():946] saving file wandb-metadata.json with policy now
+2022-04-22 21:11:10,618 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: stop_status
+2022-04-22 21:11:10,618 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: stop_status
+2022-04-22 21:11:10,766 DEBUG   SenderThread:143050 [sender.py:send():232] send: telemetry
+2022-04-22 21:11:10,766 DEBUG   SenderThread:143050 [sender.py:send():232] send: metric
+2022-04-22 21:11:10,766 DEBUG   SenderThread:143050 [sender.py:send():232] send: telemetry
+2022-04-22 21:11:10,766 DEBUG   SenderThread:143050 [sender.py:send():232] send: metric
+2022-04-22 21:11:10,767 DEBUG   SenderThread:143050 [sender.py:send():232] send: metric
+2022-04-22 21:11:10,767 DEBUG   SenderThread:143050 [sender.py:send():232] send: metric
+2022-04-22 21:11:10,767 DEBUG   SenderThread:143050 [sender.py:send():232] send: metric
+2022-04-22 21:11:11,174 INFO    Thread-11 :143050 [upload_job.py:push():137] Uploaded file /tmp/tmpqrcx39ciwandb/1whpph1b-wandb-metadata.json
+2022-04-22 21:11:11,351 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_created():213] file/dir created: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/requirements.txt
+2022-04-22 21:11:11,352 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_created():213] file/dir created: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:11,352 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_created():213] file/dir created: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/wandb-summary.json
+2022-04-22 21:11:11,352 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_created():213] file/dir created: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/wandb-metadata.json
+2022-04-22 21:11:11,741 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:11,932 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:12,140 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:12,344 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:12,536 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:12,747 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:12,949 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:13,149 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:13,350 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:13,350 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:13,552 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:13,767 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:13,966 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:14,167 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:14,376 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:14,576 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:14,780 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:14,982 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:15,181 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:15,351 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:15,398 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:15,592 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:15,807 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:15,992 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:16,198 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:16,402 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:16,602 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:16,806 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:17,007 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:17,209 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:17,353 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:17,409 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:17,619 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:17,823 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:18,023 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:18,229 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:18,435 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:18,627 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:18,842 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:19,035 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:19,239 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:19,354 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:19,439 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:19,640 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:19,849 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:20,055 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:20,247 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:20,446 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:20,660 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:20,854 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:21,059 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:21,258 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:21,354 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:21,453 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:21,666 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:21,859 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:22,062 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:22,265 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:22,464 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:22,678 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:22,876 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:23,073 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:23,283 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:23,355 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:23,482 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:23,702 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:23,898 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:24,102 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:24,296 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:24,511 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:24,704 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:24,905 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:25,117 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:25,318 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:25,359 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:25,531 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:25,737 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:25,767 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: stop_status
+2022-04-22 21:11:25,768 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: stop_status
+2022-04-22 21:11:25,943 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:26,134 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:26,346 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:26,536 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:26,739 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:26,939 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:27,145 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:27,352 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:27,360 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:27,544 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:27,754 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:27,957 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:28,155 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:28,360 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:28,553 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:28,760 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:28,961 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:29,160 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:29,362 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:29,363 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:29,570 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:29,775 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:29,975 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:30,181 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:30,381 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:30,582 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:30,781 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:30,984 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:31,205 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:31,363 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:31,404 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:31,606 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:31,801 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:31,802 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:31,803 DEBUG   SenderThread:143050 [sender.py:send():232] send: history
+2022-04-22 21:11:31,803 DEBUG   SenderThread:143050 [sender.py:send():232] send: summary
+2022-04-22 21:11:31,804 INFO    SenderThread:143050 [sender.py:_save_file():946] saving file wandb-summary.json with policy end
+2022-04-22 21:11:32,363 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/wandb-summary.json
+2022-04-22 21:11:33,065 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:33,267 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:33,364 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:33,475 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:33,672 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:33,883 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:34,075 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:34,291 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:34,479 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:34,696 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-22 21:11:34,907 DEBUG   SenderThread:143050 [sender.py:send():232] send: telemetry
+2022-04-22 21:11:35,364 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:36,365 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:37,365 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:37,666 DEBUG   SenderThread:143050 [sender.py:send():232] send: exit
+2022-04-22 21:11:37,666 INFO    SenderThread:143050 [sender.py:send_exit():368] handling exit code: 1
+2022-04-22 21:11:37,667 INFO    SenderThread:143050 [sender.py:send_exit():370] handling runtime: 27
+2022-04-22 21:11:37,667 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:37,670 INFO    SenderThread:143050 [sender.py:_save_file():946] saving file wandb-summary.json with policy end
+2022-04-22 21:11:37,670 INFO    SenderThread:143050 [sender.py:send_exit():376] send defer
+2022-04-22 21:11:37,671 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:37,671 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: defer
+2022-04-22 21:11:37,672 INFO    HandlerThread:143050 [handler.py:handle_request_defer():164] handle defer: 0
+2022-04-22 21:11:37,672 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: defer
+2022-04-22 21:11:37,672 INFO    SenderThread:143050 [sender.py:send_request_defer():385] handle sender defer: 0
+2022-04-22 21:11:37,672 INFO    SenderThread:143050 [sender.py:transition_state():389] send defer: 1
+2022-04-22 21:11:37,673 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: defer
+2022-04-22 21:11:37,673 INFO    HandlerThread:143050 [handler.py:handle_request_defer():164] handle defer: 1
+2022-04-22 21:11:37,696 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: defer
+2022-04-22 21:11:37,698 INFO    SenderThread:143050 [sender.py:send_request_defer():385] handle sender defer: 1
+2022-04-22 21:11:37,698 INFO    SenderThread:143050 [sender.py:transition_state():389] send defer: 2
+2022-04-22 21:11:37,698 DEBUG   SenderThread:143050 [sender.py:send():232] send: stats
+2022-04-22 21:11:37,699 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: defer
+2022-04-22 21:11:37,699 INFO    HandlerThread:143050 [handler.py:handle_request_defer():164] handle defer: 2
+2022-04-22 21:11:37,700 DEBUG   SenderThread:143050 [sender.py:send():232] send: history
+2022-04-22 21:11:37,701 DEBUG   SenderThread:143050 [sender.py:send():232] send: summary
+2022-04-22 21:11:37,701 INFO    SenderThread:143050 [sender.py:_save_file():946] saving file wandb-summary.json with policy end
+2022-04-22 21:11:37,702 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: defer
+2022-04-22 21:11:37,702 INFO    SenderThread:143050 [sender.py:send_request_defer():385] handle sender defer: 2
+2022-04-22 21:11:37,702 INFO    SenderThread:143050 [sender.py:transition_state():389] send defer: 3
+2022-04-22 21:11:37,703 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: defer
+2022-04-22 21:11:37,703 INFO    HandlerThread:143050 [handler.py:handle_request_defer():164] handle defer: 3
+2022-04-22 21:11:37,703 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: defer
+2022-04-22 21:11:37,703 INFO    SenderThread:143050 [sender.py:send_request_defer():385] handle sender defer: 3
+2022-04-22 21:11:37,703 INFO    SenderThread:143050 [sender.py:transition_state():389] send defer: 4
+2022-04-22 21:11:37,703 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: defer
+2022-04-22 21:11:37,703 INFO    HandlerThread:143050 [handler.py:handle_request_defer():164] handle defer: 4
+2022-04-22 21:11:37,704 DEBUG   SenderThread:143050 [sender.py:send():232] send: summary
+2022-04-22 21:11:37,707 INFO    SenderThread:143050 [sender.py:_save_file():946] saving file wandb-summary.json with policy end
+2022-04-22 21:11:37,708 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: defer
+2022-04-22 21:11:37,708 INFO    SenderThread:143050 [sender.py:send_request_defer():385] handle sender defer: 4
+2022-04-22 21:11:37,708 INFO    SenderThread:143050 [sender.py:transition_state():389] send defer: 5
+2022-04-22 21:11:37,708 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: defer
+2022-04-22 21:11:37,708 INFO    HandlerThread:143050 [handler.py:handle_request_defer():164] handle defer: 5
+2022-04-22 21:11:37,709 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: defer
+2022-04-22 21:11:37,709 INFO    SenderThread:143050 [sender.py:send_request_defer():385] handle sender defer: 5
+2022-04-22 21:11:37,773 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:37,900 INFO    SenderThread:143050 [sender.py:transition_state():389] send defer: 6
+2022-04-22 21:11:37,900 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:37,900 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: defer
+2022-04-22 21:11:37,901 INFO    HandlerThread:143050 [handler.py:handle_request_defer():164] handle defer: 6
+2022-04-22 21:11:37,901 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: defer
+2022-04-22 21:11:37,901 INFO    SenderThread:143050 [sender.py:send_request_defer():385] handle sender defer: 6
+2022-04-22 21:11:37,901 INFO    SenderThread:143050 [dir_watcher.py:finish():279] shutting down directory watcher
+2022-04-22 21:11:38,002 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:38,365 INFO    Thread-7  :143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/config.yaml
+2022-04-22 21:11:38,366 INFO    SenderThread:143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:38,366 INFO    SenderThread:143050 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/wandb-summary.json
+2022-04-22 21:11:38,367 INFO    SenderThread:143050 [dir_watcher.py:finish():309] scan: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files
+2022-04-22 21:11:38,367 INFO    SenderThread:143050 [dir_watcher.py:finish():323] scan save: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/config.yaml config.yaml
+2022-04-22 21:11:38,367 INFO    SenderThread:143050 [dir_watcher.py:finish():323] scan save: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/wandb-metadata.json wandb-metadata.json
+2022-04-22 21:11:38,368 INFO    SenderThread:143050 [dir_watcher.py:finish():323] scan save: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log output.log
+2022-04-22 21:11:38,370 INFO    SenderThread:143050 [dir_watcher.py:finish():323] scan save: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/requirements.txt requirements.txt
+2022-04-22 21:11:38,371 INFO    SenderThread:143050 [dir_watcher.py:finish():323] scan save: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/wandb-summary.json wandb-summary.json
+2022-04-22 21:11:38,374 INFO    SenderThread:143050 [sender.py:transition_state():389] send defer: 7
+2022-04-22 21:11:38,375 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:38,379 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: defer
+2022-04-22 21:11:38,379 INFO    HandlerThread:143050 [handler.py:handle_request_defer():164] handle defer: 7
+2022-04-22 21:11:38,382 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: defer
+2022-04-22 21:11:38,388 INFO    SenderThread:143050 [sender.py:send_request_defer():385] handle sender defer: 7
+2022-04-22 21:11:38,388 INFO    SenderThread:143050 [file_pusher.py:finish():145] shutting down file pusher
+2022-04-22 21:11:38,482 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:38,483 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:38,585 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:38,585 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:38,686 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:38,687 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:38,788 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:38,789 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:38,891 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:38,891 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:38,915 INFO    Thread-14 :143050 [upload_job.py:push():137] Uploaded file /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/requirements.txt
+2022-04-22 21:11:38,940 INFO    Thread-15 :143050 [upload_job.py:push():137] Uploaded file /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/wandb-summary.json
+2022-04-22 21:11:38,994 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:38,994 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:39,004 INFO    Thread-12 :143050 [upload_job.py:push():137] Uploaded file /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/config.yaml
+2022-04-22 21:11:39,096 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:39,096 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:39,198 INFO    Thread-13 :143050 [upload_job.py:push():137] Uploaded file /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/files/output.log
+2022-04-22 21:11:39,199 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:39,202 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:39,305 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:39,305 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:39,401 INFO    Thread-6  :143050 [sender.py:transition_state():389] send defer: 8
+2022-04-22 21:11:39,401 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: defer
+2022-04-22 21:11:39,401 INFO    HandlerThread:143050 [handler.py:handle_request_defer():164] handle defer: 8
+2022-04-22 21:11:39,402 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: defer
+2022-04-22 21:11:39,402 INFO    SenderThread:143050 [sender.py:send_request_defer():385] handle sender defer: 8
+2022-04-22 21:11:39,407 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:39,656 INFO    SenderThread:143050 [sender.py:transition_state():389] send defer: 9
+2022-04-22 21:11:39,657 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:39,657 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: defer
+2022-04-22 21:11:39,657 INFO    HandlerThread:143050 [handler.py:handle_request_defer():164] handle defer: 9
+2022-04-22 21:11:39,657 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: defer
+2022-04-22 21:11:39,657 INFO    SenderThread:143050 [sender.py:send_request_defer():385] handle sender defer: 9
+2022-04-22 21:11:39,658 INFO    SenderThread:143050 [sender.py:transition_state():389] send defer: 10
+2022-04-22 21:11:39,658 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: defer
+2022-04-22 21:11:39,658 INFO    HandlerThread:143050 [handler.py:handle_request_defer():164] handle defer: 10
+2022-04-22 21:11:39,658 DEBUG   SenderThread:143050 [sender.py:send():232] send: final
+2022-04-22 21:11:39,658 DEBUG   SenderThread:143050 [sender.py:send():232] send: footer
+2022-04-22 21:11:39,658 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: defer
+2022-04-22 21:11:39,659 INFO    SenderThread:143050 [sender.py:send_request_defer():385] handle sender defer: 10
+2022-04-22 21:11:39,759 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-22 21:11:39,760 DEBUG   SenderThread:143050 [sender.py:send_request():246] send_request: poll_exit
+2022-04-22 21:11:39,761 INFO    SenderThread:143050 [file_pusher.py:join():150] waiting for file pusher
+2022-04-22 21:11:40,147 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: sampled_history
+2022-04-22 21:11:40,149 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: get_summary
+2022-04-22 21:11:40,151 DEBUG   HandlerThread:143050 [handler.py:handle_request():141] handle_request: shutdown
+2022-04-22 21:11:40,151 INFO    HandlerThread:143050 [handler.py:finish():806] shutting down handler
+2022-04-22 21:11:40,658 INFO    WriterThread:143050 [datastore.py:close():279] close: /home/avnish/DDPG_AMR_Control1/src/ddpg_control/scripts/wandb/run-20220422_211109-ct8t5g2s/run-ct8t5g2s.wandb
+2022-04-22 21:11:41,046 INFO    SenderThread:143050 [sender.py:finish():1106] shutting down sender
+2022-04-22 21:11:41,046 INFO    SenderThread:143050 [file_pusher.py:finish():145] shutting down file pusher
+2022-04-22 21:11:41,046 INFO    SenderThread:143050 [file_pusher.py:join():150] waiting for file pusher
+2022-04-22 21:11:41,048 INFO    MainThread:143050 [internal.py:handle_exit():80] Internal process exited

@@ -62,7 +62,6 @@ def run_training():
         print(f"---------------------- EPISODE {ep + 1} --------------------")
         done = False
         state = env.reset()
-        print(state.shape)
         rewards_current_episode = 0.0
         past_action = np.zeros(config.ACTION_DIMENSION)
         episode_steps = 0

@@ -15,7 +15,6 @@ class MemoryBuffer:
 
     def sample(self, count):
         batch = []
-        count = min(count, self.len)
         batch = random.sample(self.buffer, count)
 
         s_array = np.float32([array[0] for array in batch])
