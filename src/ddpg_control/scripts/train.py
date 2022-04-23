@@ -14,9 +14,9 @@ import wandb
 
 def init_plotting():
     conf = dict(
-        learning_rate_actor = conf.ACTOR_LR,
-        learning_rate_critic = conf.CRITIC_LR,
-        batch_size = conf.BATCH_SIZE,
+        learning_rate_actor = config.ACTOR_LR,
+        learning_rate_critic = config.CRITIC_LR,
+        batch_size = config.BATCH_SIZE,
         architecture = "DDPG",
         infra = "Ubuntu",
         env = "ddpg"
@@ -30,7 +30,7 @@ def init_plotting():
     )
     
     wandb.define_metric("steps")
-    wabdb.define_metric("episodes")
+    wandb.define_metric("episodes")
     wandb.define_metric("critic_loss", step_metric = "steps")
     wandb.define_metric("average_reward", step_metric = "episodes")
     wandb.define_metric("episode_reward", step_metric = "episodes")
@@ -62,6 +62,7 @@ def run_training():
         print(f"---------------------- EPISODE {ep + 1} --------------------")
         done = False
         state = env.reset()
+        print(state.shape)
         rewards_current_episode = 0.0
         past_action = np.zeros(config.ACTION_DIMENSION)
         episode_steps = 0
@@ -72,7 +73,7 @@ def run_training():
             state = np.float32(state)
             action = agent.get_action(state)
             
-            N = copy.deepcopy(noise.get_noise(t = step))
+            N = copy.deepcopy(noise.get_noise(t = steps))
             N[0] = N[0] * config.ACTION_V_MAX / 2
             N[1] = N[1] * config.ACTION_W_MAX
             action[0] = np.clip(action[0] + N[0], 0., config.ACTION_V_MAX)
@@ -84,11 +85,11 @@ def run_training():
             memory_buffer.add(state, action, reward, next_state, done)
             state = copy.deepcopy(next_state)
             
-            print("step: {} | reward: {} | done: {} | action: {},{}".format(steps, reward, done, action[0], action[1])
+            print("step: {} | reward: {} | done: {} | action: {},{}".format(steps, reward, done, action[0], action[1]))
             
             past_action = copy.deepcopy(action)
             
-            if(steps % config.LEARN_RATE == 0 and steps > config.MIN_SIZE_BUFFER):
+            if(steps % config.LEARN_RATE == 0 and steps > config.MIN_BUFFER_SIZE):
                 for i in range(20):
                     agent.learn()
                     print(f"{Fore.BLUE}-------------------- Agent Learning ---------------{Style.RESET_ALL}")
@@ -96,11 +97,11 @@ def run_training():
             if config.MAX_STEPS <= episode_steps:
                 done = True
             
-            if(steps % config.TARGET_UPDATE_RATE == 0 and steps > config.MIN_SIZE_BUFFER):
+            if(steps % config.TARGET_UPDATE_RATE == 0 and steps > config.MIN_BUFFER_SIZE):
                 agent.update_target()
                 print(f"{Fore.RED}-------------------- Updating Target Networks ---------------{Style.RESET_ALL}")
                 
-            if (steps % SAVE_FREQUENCY and steps > config.MIN_SIZE_BUFFER == 0):
+            if (steps % config.NETWORK_SAVE_RATE and steps > config.MIN_BUFFER_SIZE == 0):
                 agent.save(steps)
                 print(f"{Fore.GREEN}-------------------- SAVING THE MODEL ---------------{Style.RESET_ALL}")
                 
@@ -132,4 +133,5 @@ if __name__ == '__main__':
     rospy.init_node('ddpg_train')
     pub_episode_reward = rospy.Publisher('episode_reward', Float32, queue_size=5)
     pub_average_reward = rospy.Publisher('average_reward', Float32, queue_size=5)
+    init_plotting()
     run_training()

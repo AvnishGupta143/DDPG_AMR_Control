@@ -119,15 +119,15 @@ class Env():
 
         distance_rate = (self.past_distance - current_distance) 
         if distance_rate > 0:
-            # reward = 200.*distance_rate
-            reward = 0.
+            reward = 200.*distance_rate
+            # reward = 0.
 
         # if distance_rate == 0:
         #     reward = 0.
 
         if distance_rate <= 0:
-            # reward = -8.
-            reward = 0.
+            reward = -8.
+            # reward = 0.
 
         #angle_reward = math.pi - abs(heading)
         #print('d', 500*distance_rate)
@@ -155,6 +155,7 @@ class Env():
 
         if self.get_goalbox:
             rospy.loginfo("Goal!!")
+            done=True
             # reward = 500.
             reward = 100.
             self.pub_cmd_vel.publish(Twist())

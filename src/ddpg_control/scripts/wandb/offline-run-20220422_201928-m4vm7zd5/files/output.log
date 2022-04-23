@@ -1,0 +1,294 @@
+State Dimensions: 364
+Action Dimensions: 2
+Action Max: 0.2 m/s and 1 rad/s
+---------------------- EPISODE 1 --------------------
+waiting for service
+reset called
+[INFO] [1650673171.626973, 0.899000]: Goal position : 0.6, 0.0
+0.6 0.0
+torch.Size([364])
+step: 1 | reward: -8.0 | done: False | action: 0.06510806828737259,0.971815288066864
+torch.Size([364])
+step: 2 | reward: 2.0000000000000018 | done: False | action: 0.08080369234085083,0.9219865202903748
+torch.Size([364])
+step: 3 | reward: 2.0000000000000018 | done: False | action: 0.06992711871862411,0.8488448262214661
+torch.Size([364])
+step: 4 | reward: 2.0000000000000018 | done: False | action: 0.06468978524208069,0.8167852163314819
+torch.Size([364])
+step: 5 | reward: 1.9999999999999796 | done: False | action: 0.06568024307489395,0.9056962132453918
+torch.Size([364])
+step: 6 | reward: 2.0000000000000018 | done: False | action: 0.05726908892393112,0.9217495918273926
+torch.Size([364])
+step: 7 | reward: -8.0 | done: False | action: 0.04246141389012337,1.0
+torch.Size([364])
+step: 8 | reward: 2.0000000000000018 | done: False | action: 0.041475292295217514,1.0
+torch.Size([364])
+step: 9 | reward: -8.0 | done: False | action: 0.030166273936629295,0.7999534606933594
+torch.Size([364])
+step: 10 | reward: -8.0 | done: False | action: 0.048855848610401154,0.8796262145042419
+torch.Size([364])
+step: 11 | reward: -8.0 | done: False | action: 0.04504374787211418,0.8632540106773376
+torch.Size([364])
+step: 12 | reward: -8.0 | done: False | action: 0.045165639370679855,0.6962698101997375
+torch.Size([364])
+step: 13 | reward: -8.0 | done: False | action: 0.06611154973506927,0.8616787195205688
+torch.Size([364])
+step: 14 | reward: -8.0 | done: False | action: 0.05018933117389679,1.0
+torch.Size([364])
+step: 15 | reward: -8.0 | done: False | action: 0.05045519396662712,0.9658724665641785
+torch.Size([364])
+step: 16 | reward: -8.0 | done: False | action: 0.05563894286751747,0.8789076209068298
+torch.Size([364])
+step: 17 | reward: -8.0 | done: False | action: 0.052546367049217224,0.8961888551712036
+torch.Size([364])
+step: 18 | reward: -8.0 | done: False | action: 0.07219040393829346,0.8188942670822144
+torch.Size([364])
+step: 19 | reward: -8.0 | done: False | action: 0.08231905847787857,0.9727389812469482
+torch.Size([364])
+step: 20 | reward: -8.0 | done: False | action: 0.08933988213539124,1.0
+torch.Size([364])
+step: 21 | reward: -8.0 | done: False | action: 0.07752174884080887,0.8068709969520569
+torch.Size([364])
+step: 22 | reward: -8.0 | done: False | action: 0.07012850046157837,0.7530110478401184
+torch.Size([364])
+step: 23 | reward: -8.0 | done: False | action: 0.04794913902878761,0.8760786056518555
+torch.Size([364])
+step: 24 | reward: -8.0 | done: False | action: 0.0615229569375515,0.8604648113250732
+torch.Size([364])
+step: 25 | reward: -8.0 | done: False | action: 0.0857437252998352,0.9424288272857666
+torch.Size([364])
+step: 26 | reward: -8.0 | done: False | action: 0.08257836103439331,0.7793624401092529
+torch.Size([364])
+step: 27 | reward: -8.0 | done: False | action: 0.07926812022924423,0.7650960087776184
+torch.Size([364])
+step: 28 | reward: -8.0 | done: False | action: 0.09139754623174667,0.8114219903945923
+torch.Size([364])
+step: 29 | reward: 2.0000000000000018 | done: False | action: 0.10444498807191849,0.8079915642738342
+torch.Size([364])
+step: 30 | reward: 2.0000000000000018 | done: False | action: 0.0969976857304573,1.0
+torch.Size([364])
+step: 31 | reward: 2.0000000000000018 | done: False | action: 0.09624408185482025,1.0
+torch.Size([364])
+step: 32 | reward: 2.0000000000000018 | done: False | action: 0.08480187505483627,1.0
+torch.Size([364])
+step: 33 | reward: 2.0000000000000018 | done: False | action: 0.08559370785951614,1.0
+torch.Size([364])
+step: 34 | reward: 4.0000000000000036 | done: False | action: 0.08050961792469025,1.0
+torch.Size([364])
+step: 35 | reward: 1.9999999999999796 | done: False | action: 0.07775399088859558,1.0
+torch.Size([364])
+step: 36 | reward: 2.0000000000000018 | done: False | action: 0.06930146366357803,1.0
+torch.Size([364])
+step: 37 | reward: 2.0000000000000018 | done: False | action: 0.06313495337963104,0.9720715284347534
+torch.Size([364])
+step: 38 | reward: 2.0000000000000018 | done: False | action: 0.07851928472518921,0.8852033019065857
+torch.Size([364])
+step: 39 | reward: 2.0000000000000018 | done: False | action: 0.058635491877794266,0.9453572630882263
+torch.Size([364])
+step: 40 | reward: 2.0000000000000018 | done: False | action: 0.041858430951833725,0.922036349773407
+torch.Size([364])
+step: 41 | reward: -8.0 | done: False | action: 0.04462756961584091,0.8094278573989868
+torch.Size([364])
+step: 42 | reward: 2.0000000000000018 | done: False | action: 0.049085237085819244,0.6591053009033203
+torch.Size([364])
+step: 43 | reward: -8.0 | done: False | action: 0.042437393218278885,0.7423408627510071
+torch.Size([364])
+step: 44 | reward: -8.0 | done: False | action: 0.05228103697299957,0.9333776831626892
+torch.Size([364])
+step: 45 | reward: -8.0 | done: False | action: 0.06206226721405983,0.8953133821487427
+torch.Size([364])
+step: 46 | reward: -8.0 | done: False | action: 0.08470098674297333,0.9604879021644592
+torch.Size([364])
+step: 47 | reward: -8.0 | done: False | action: 0.08399125933647156,0.9325476288795471
+torch.Size([364])
+step: 48 | reward: -8.0 | done: False | action: 0.08679693192243576,0.879655659198761
+torch.Size([364])
+step: 49 | reward: -8.0 | done: False | action: 0.07445694506168365,0.793724775314331
+torch.Size([364])
+step: 50 | reward: -8.0 | done: False | action: 0.06707794964313507,0.7907037138938904
+torch.Size([364])
+step: 51 | reward: -8.0 | done: False | action: 0.05811155587434769,0.8473988175392151
+torch.Size([364])
+step: 52 | reward: -8.0 | done: False | action: 0.06241524592041969,0.8326083421707153
+torch.Size([364])
+step: 53 | reward: -8.0 | done: False | action: 0.07378849387168884,0.7658044695854187
+torch.Size([364])
+step: 54 | reward: -8.0 | done: False | action: 0.09149940311908722,0.685474693775177
+torch.Size([364])
+step: 55 | reward: -8.0 | done: False | action: 0.09990902990102768,0.7651305198669434
+torch.Size([364])
+step: 56 | reward: -8.0 | done: False | action: 0.1086578294634819,0.9346513152122498
+torch.Size([364])
+step: 57 | reward: -8.0 | done: False | action: 0.1004200130701065,0.8844053745269775
+torch.Size([364])
+step: 58 | reward: -8.0 | done: False | action: 0.08792530745267868,0.8239913582801819
+torch.Size([364])
+step: 59 | reward: -8.0 | done: False | action: 0.0707889273762703,0.7444030046463013
+torch.Size([364])
+step: 60 | reward: -8.0 | done: False | action: 0.06664909422397614,0.7682921290397644
+torch.Size([364])
+step: 61 | reward: -8.0 | done: False | action: 0.062067411839962006,0.7615844011306763
+torch.Size([364])
+step: 62 | reward: -8.0 | done: False | action: 0.07380744069814682,0.7568414807319641
+torch.Size([364])
+step: 63 | reward: -8.0 | done: False | action: 0.07739297300577164,0.9056057929992676
+torch.Size([364])
+step: 64 | reward: -8.0 | done: False | action: 0.08640898764133453,0.8183937668800354
+torch.Size([364])
+step: 65 | reward: 2.0000000000000018 | done: False | action: 0.08174706250429153,0.9555944204330444
+torch.Size([364])
+step: 66 | reward: -8.0 | done: False | action: 0.09013541787862778,1.0
+torch.Size([364])
+step: 67 | reward: 2.0000000000000018 | done: False | action: 0.08061901479959488,1.0
+torch.Size([364])
+step: 68 | reward: 2.0000000000000018 | done: False | action: 0.07534957677125931,1.0
+torch.Size([364])
+step: 69 | reward: 2.0000000000000018 | done: False | action: 0.08732389658689499,1.0
+torch.Size([364])
+step: 70 | reward: 2.0000000000000018 | done: False | action: 0.09986269474029541,1.0
+torch.Size([364])
+step: 71 | reward: 4.0000000000000036 | done: False | action: 0.1068277508020401,1.0
+torch.Size([364])
+step: 72 | reward: 4.0000000000000036 | done: False | action: 0.09855087101459503,0.9963191151618958
+torch.Size([364])
+step: 73 | reward: 4.0000000000000036 | done: False | action: 0.09520993381738663,0.8489900827407837
+torch.Size([364])
+step: 74 | reward: 1.9999999999999796 | done: False | action: 0.09076175838708878,0.8560338616371155
+torch.Size([364])
+step: 75 | reward: 4.0000000000000036 | done: False | action: 0.06613592058420181,0.7060021162033081
+torch.Size([364])
+step: 76 | reward: 2.0000000000000018 | done: False | action: 0.05284586548805237,0.6886023879051208
+torch.Size([364])
+step: 77 | reward: -8.0 | done: False | action: 0.06152698025107384,0.6924440860748291
+torch.Size([364])
+step: 78 | reward: 2.0000000000000018 | done: False | action: 0.06056666001677513,0.6277046203613281
+torch.Size([364])
+step: 79 | reward: 2.0000000000000018 | done: False | action: 0.05278051644563675,0.6207458972930908
+torch.Size([364])
+step: 80 | reward: -8.0 | done: False | action: 0.07552529871463776,0.6286548972129822
+torch.Size([364])
+step: 81 | reward: -8.0 | done: False | action: 0.09612759947776794,0.8180545568466187
+torch.Size([364])
+step: 82 | reward: 2.0000000000000018 | done: False | action: 0.10462110489606857,0.8273002505302429
+torch.Size([364])
+step: 83 | reward: -8.0 | done: False | action: 0.0910421833395958,0.8100715279579163
+torch.Size([364])
+step: 84 | reward: -8.0 | done: False | action: 0.07540971040725708,0.8380957245826721
+torch.Size([364])
+step: 85 | reward: -8.0 | done: False | action: 0.05919203162193298,0.7880075573921204
+torch.Size([364])
+step: 86 | reward: -8.0 | done: False | action: 0.04120476916432381,0.8692299127578735
+torch.Size([364])
+step: 87 | reward: -8.0 | done: False | action: 0.03749224916100502,0.9196935892105103
+torch.Size([364])
+step: 88 | reward: -8.0 | done: False | action: 0.04502306133508682,0.8640271425247192
+torch.Size([364])
+step: 89 | reward: -8.0 | done: False | action: 0.05894431471824646,0.7881502509117126
+torch.Size([364])
+step: 90 | reward: -8.0 | done: False | action: 0.053144004195928574,0.8524738550186157
+torch.Size([364])
+step: 91 | reward: -8.0 | done: False | action: 0.07269929349422455,0.7770930528640747
+torch.Size([364])
+step: 92 | reward: -8.0 | done: False | action: 0.07882658392190933,0.7378670573234558
+torch.Size([364])
+step: 93 | reward: -8.0 | done: False | action: 0.06659986078739166,1.0
+torch.Size([364])
+step: 94 | reward: -8.0 | done: False | action: 0.06327808648347855,0.9111016988754272
+torch.Size([364])
+step: 95 | reward: -8.0 | done: False | action: 0.05976775288581848,0.8774189352989197
+torch.Size([364])
+step: 96 | reward: -8.0 | done: False | action: 0.05089744180440903,0.8800519704818726
+torch.Size([364])
+step: 97 | reward: -8.0 | done: False | action: 0.050804708153009415,0.9349768757820129
+torch.Size([364])
+step: 98 | reward: -8.0 | done: False | action: 0.06095690652728081,1.0
+torch.Size([364])
+step: 99 | reward: -8.0 | done: False | action: 0.07491256296634674,1.0
+torch.Size([364])
+step: 100 | reward: -8.0 | done: False | action: 0.08185791969299316,1.0
+------------------------------------- EPISODE END -----------------------------------------
+---------------------- EPISODE 2 --------------------
+waiting for service
+reset called
+[INFO] [1650673192.685066, 1.075000]: Goal position : -0.3, -1.2
+-0.3 -1.2
+torch.Size([364])
+step: 101 | reward: -8.0 | done: False | action: 0.07564785331487656,1.0
+torch.Size([364])
+step: 102 | reward: -8.0 | done: False | action: 0.048414647579193115,1.0
+torch.Size([364])
+step: 103 | reward: -8.0 | done: False | action: 0.06125247851014137,1.0
+torch.Size([364])
+step: 104 | reward: -8.0 | done: False | action: 0.06664466857910156,1.0
+torch.Size([364])
+step: 105 | reward: -8.0 | done: False | action: 0.07929257303476334,1.0
+[31m-------------------- Updating Target Networks ---------------
+torch.Size([364])
+step: 106 | reward: -8.0 | done: False | action: 0.07648253440856934,1.0
+torch.Size([364])
+step: 107 | reward: -8.0 | done: False | action: 0.0776849091053009,1.0
+torch.Size([364])
+step: 108 | reward: -8.0 | done: False | action: 0.08070364594459534,1.0
+torch.Size([364])
+step: 109 | reward: -8.0 | done: False | action: 0.08466468006372452,0.9910488724708557
+torch.Size([364])
+step: 110 | reward: -8.0 | done: False | action: 0.09312788397073746,0.8892289996147156
+torch.Size([0])
+Exception in thread /scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)	
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+Exception in thread /scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)	
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+Traceback (most recent call last):
+  File "train.py", line 136, in <module>
+    run_training()
+  File "train.py", line 93, in run_training
+    agent.learn()
+  File "/home/ak47/DDPG_AMR_Control/src/ddpg_control/scripts/agents.py", line 69, in learn
+    a_target = self.target_actor.forward(new_s_sample).detach()
+  File "/home/ak47/DDPG_AMR_Control/src/ddpg_control/scripts/models.py", line 83, in forward
+    x = torch.relu(self.fa1(state))
+  File "/home/ak47/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/ak47/.local/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 96, in forward
+    return F.linear(input, self.weight, self.bias)
+  File "/home/ak47/.local/lib/python3.8/site-packages/torch/nn/functional.py", line 1847, in linear
+    return torch._C._nn.linear(input, weight, bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (1x0 and 364x250)
+Traceback (most recent call last):
+  File "train.py", line 136, in <module>
+    run_training()
+  File "train.py", line 93, in run_training
+    agent.learn()
+  File "/home/ak47/DDPG_AMR_Control/src/ddpg_control/scripts/agents.py", line 69, in learn
+    a_target = self.target_actor.forward(new_s_sample).detach()
+  File "/home/ak47/DDPG_AMR_Control/src/ddpg_control/scripts/models.py", line 83, in forward
+    x = torch.relu(self.fa1(state))
+  File "/home/ak47/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/ak47/.local/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 96, in forward
+    return F.linear(input, self.weight, self.bias)
+  File "/home/ak47/.local/lib/python3.8/site-packages/torch/nn/functional.py", line 1847, in linear
+    return torch._C._nn.linear(input, weight, bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (1x0 and 364x250)

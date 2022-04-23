@@ -79,6 +79,7 @@ class Actor(nn.Module):
         # self.fa3.weight.data.uniform_(-EPS,EPS)
 
     def forward(self, state):
+        print(state.shape)
         x = torch.relu(self.fa1(state))
         x = torch.relu(self.fa2(x))
         action = self.fa3(x)

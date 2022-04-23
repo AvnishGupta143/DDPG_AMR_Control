@@ -1,0 +1,12 @@
+2022-04-22 19:53:12,096 INFO    MainThread:47028 [internal.py:wandb_internal():90] W&B internal server running at pid: 47028, started at: 2022-04-22 19:53:12.095764
+2022-04-22 19:53:12,098 DEBUG   HandlerThread:47028 [handler.py:handle_request():141] handle_request: run_start
+2022-04-22 19:53:12,099 INFO    WriterThread:47028 [datastore.py:open_for_write():75] open: /home/ak47/DDPG_AMR_Control/src/ddpg_control/scripts/wandb/offline-run-20220422_195311-3ayk5pzm/run-3ayk5pzm.wandb
+2022-04-22 19:53:28,830 DEBUG   HandlerThread:47028 [meta.py:__init__():35] meta init
+2022-04-22 19:53:28,830 DEBUG   HandlerThread:47028 [meta.py:__init__():49] meta init done
+2022-04-22 19:53:28,830 DEBUG   HandlerThread:47028 [meta.py:probe():209] probe
+2022-04-22 19:53:28,837 DEBUG   HandlerThread:47028 [meta.py:_setup_git():199] setup git
+2022-04-22 19:53:28,861 DEBUG   HandlerThread:47028 [meta.py:_setup_git():206] setup git done
+2022-04-22 19:53:28,861 DEBUG   HandlerThread:47028 [meta.py:_save_pip():53] save pip
+2022-04-22 19:53:28,862 DEBUG   HandlerThread:47028 [meta.py:_save_pip():67] save pip done
+2022-04-22 19:53:28,862 DEBUG   HandlerThread:47028 [meta.py:probe():247] probe done
+2022-04-22 19:53:32,913 WARNING MainThread:47028 [internal.py:wandb_internal():153] Internal process interrupt: 1

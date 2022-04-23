@@ -1,0 +1,24 @@
+{
+    "os": "Linux-5.13.0-40-generic-x86_64-with-glibc2.29",
+    "python": "3.8.10",
+    "heartbeatAt": "2022-04-23T00:04:48.450671",
+    "startedAt": "2022-04-23T00:04:46.376503",
+    "docker": null,
+    "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "train.py",
+    "codePath": "src/ddpg_control/scripts/train.py",
+    "git": {
+        "remote": "https://github.com/AvnishGupta143/DDPG_AMR_Control.git",
+        "commit": "9d066f7e644287d194e4716cfc5f734c22d41db6"
+    },
+    "email": null,
+    "root": "/home/ak47/DDPG_AMR_Control",
+    "host": "ak",
+    "username": "ak47",
+    "executable": "/usr/bin/python3"
+}

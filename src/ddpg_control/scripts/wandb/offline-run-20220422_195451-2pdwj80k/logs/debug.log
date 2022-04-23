@@ -1,0 +1,22 @@
+2022-04-22 19:54:51,615 INFO    MainThread:47162 [wandb_setup.py:_EarlyLogger._flush():75] Loading settings from /home/ak47/.config/wandb/settings
+2022-04-22 19:54:51,615 INFO    MainThread:47162 [wandb_setup.py:_EarlyLogger._flush():75] Loading settings from /home/ak47/DDPG_AMR_Control/src/ddpg_control/scripts/wandb/settings
+2022-04-22 19:54:51,615 INFO    MainThread:47162 [wandb_setup.py:_EarlyLogger._flush():75] Loading settings from environment variables: {}
+2022-04-22 19:54:51,615 INFO    MainThread:47162 [wandb_setup.py:_EarlyLogger._flush():75] Inferring run settings from compute environment: {'program_relpath': 'src/ddpg_control/scripts/train.py', 'program': 'train.py'}
+2022-04-22 19:54:51,615 INFO    MainThread:47162 [wandb_setup.py:_EarlyLogger._flush():75] Applying login settings: {'mode': 'offline'}
+2022-04-22 19:54:51,615 INFO    MainThread:47162 [wandb_init.py:_WandbInit._log_setup():437] Logging user logs to /home/ak47/DDPG_AMR_Control/src/ddpg_control/scripts/wandb/offline-run-20220422_195451-2pdwj80k/logs/debug.log
+2022-04-22 19:54:51,616 INFO    MainThread:47162 [wandb_init.py:_WandbInit._log_setup():438] Logging internal logs to /home/ak47/DDPG_AMR_Control/src/ddpg_control/scripts/wandb/offline-run-20220422_195451-2pdwj80k/logs/debug-internal.log
+2022-04-22 19:54:51,616 INFO    MainThread:47162 [wandb_init.py:_WandbInit.init():471] calling init triggers
+2022-04-22 19:54:51,616 INFO    MainThread:47162 [wandb_init.py:_WandbInit.init():474] wandb.init called with sweep_config: {}
+config: {'learning_rate_actor': 0.001, 'learning_rate_critic': 0.005, 'batch_size': 256, 'architecture': 'DDPG', 'infra': 'Ubuntu', 'env': 'ddpg'}
+2022-04-22 19:54:51,616 INFO    MainThread:47162 [wandb_init.py:_WandbInit.init():524] starting backend
+2022-04-22 19:54:51,616 INFO    MainThread:47162 [backend.py:Backend._multiprocessing_setup():97] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2022-04-22 19:54:51,629 INFO    MainThread:47162 [backend.py:Backend.ensure_launched():217] starting backend process...
+2022-04-22 19:54:51,636 INFO    MainThread:47162 [backend.py:Backend.ensure_launched():222] started backend process with pid: 47192
+2022-04-22 19:54:51,637 INFO    MainThread:47162 [wandb_init.py:_WandbInit.init():533] backend started and connected
+2022-04-22 19:54:51,644 INFO    MainThread:47162 [wandb_init.py:_WandbInit.init():597] updated telemetry
+2022-04-22 19:54:51,663 INFO    MainThread:47162 [wandb_init.py:_WandbInit.init():659] starting run threads in backend
+2022-04-22 19:54:53,695 INFO    MainThread:47162 [wandb_run.py:Run._console_start():1897] atexit reg
+2022-04-22 19:54:53,696 INFO    MainThread:47162 [wandb_run.py:Run._redirect():1770] redirect: SettingsConsole.REDIRECT
+2022-04-22 19:54:53,696 INFO    MainThread:47162 [wandb_run.py:Run._redirect():1775] Redirecting console.
+2022-04-22 19:54:53,697 INFO    MainThread:47162 [wandb_run.py:Run._redirect():1831] Redirects installed.
+2022-04-22 19:54:53,698 INFO    MainThread:47162 [wandb_init.py:_WandbInit.init():684] run started, returning control to user process
