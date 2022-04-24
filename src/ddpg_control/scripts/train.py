@@ -75,7 +75,7 @@ def run_training():
             N = copy.deepcopy(noise.get_noise(t = steps))
             N[0] = N[0] * config.ACTION_V_MAX / 2
             N[1] = N[1] * config.ACTION_W_MAX
-            action[0] = np.clip(action[0] + N[0], 0., config.ACTION_V_MAX)
+            action[0] = np.clip(action[0] + N[0], 0.1, config.ACTION_V_MAX)
             action[1] = np.clip(action[1] + N[1], -config.ACTION_W_MAX, config.ACTION_W_MAX)
                 
             next_state, reward, done = env.step(action, past_action)
@@ -100,7 +100,7 @@ def run_training():
                 agent.update_target()
                 print(f"{Fore.RED}-------------------- Updating Target Networks ---------------{Style.RESET_ALL}")
                 
-            if (steps % config.NETWORK_SAVE_RATE and steps > config.MIN_BUFFER_SIZE == 0):
+            if (steps % config.NETWORK_SAVE_RATE == 0 and steps > config.MIN_BUFFER_SIZE):
                 agent.save_models(steps)
                 print(f"{Fore.GREEN}-------------------- SAVING THE MODEL ---------------{Style.RESET_ALL}")
                 

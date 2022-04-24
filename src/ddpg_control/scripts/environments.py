@@ -117,13 +117,13 @@ class Env():
         distance_rate = (self.past_distance - current_distance) 
         # print("distance rate ", distance_rate)
 
-        reward += 10.0 * distance_rate
-        # print("distance reward ", reward)
+        reward += 30.0 * distance_rate
+        print("distance reward ", reward)
         
         self.past_distance = current_distance
         
-        reward += (pi/4.0 - abs(heading))/10.0
-        # print("heading reward ", (pi/4.0 - abs(heading))/10.0)
+        reward += (pi/2.0 - abs(heading))/10.0
+        print("heading reward ", (pi/4.0 - abs(heading))/10.0)
         
 
         a, b, c, d = float('{0:.3f}'.format(self.position.x)), float('{0:.3f}'.format(self.past_position.x)), float('{0:.3f}'.format(self.position.y)), float('{0:.3f}'.format(self.past_position.y))
