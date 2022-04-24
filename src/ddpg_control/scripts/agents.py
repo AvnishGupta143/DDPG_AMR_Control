@@ -13,6 +13,7 @@ import config
 if config.MODEL == 0:
     from models import Actor, Critic
 elif config.MODEL == 1:
+    print("-----------------------USING BIG MODEL --------------------------------")
     from models_big import Actor, Critic
 
 # ---Functions to make network updates---#

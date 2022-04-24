@@ -32,6 +32,7 @@ def init_plotting():
     wandb.define_metric("steps")
     wandb.define_metric("episodes")
     wandb.define_metric("critic_loss", step_metric = "steps")
+    wandb.define_metric("actor_loss", step_metric = "steps")
     wandb.define_metric("average_reward", step_metric = "episodes")
     wandb.define_metric("episode_reward", step_metric = "episodes")
 
@@ -104,7 +105,7 @@ def run_training():
                 agent.save_models(steps)
                 print(f"{Fore.GREEN}-------------------- SAVING THE MODEL ---------------{Style.RESET_ALL}")
                 
-            wandb.log({'steps': steps, 'critic_loss': agent.get_critic_loss()}, commit=False)
+            wandb.log({'steps': steps, 'critic_loss': agent.get_critic_loss(), 'actor_loss': agent.get_actor_loss()}, commit=False)
 
         rewards_all_episodes.append(rewards_current_episode)
         
