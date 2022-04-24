@@ -26,18 +26,22 @@ def hard_update(target, source):
 class DDPGAgent:
 
     def __init__(self, state_dim, action_dim, action_v_max, action_w_max, memory_buffer, path_save = "models", path_load = "models"):
+        torch.set_default_tensor_type('torch.cuda.FloatTensor' if torch.cuda.is_available() else 'torch.FloatTensor')
         self.state_dim = state_dim
         self.action_dim = action_dim
         self.action_v_max = action_v_max
         self.action_w_max = action_w_max
         self.memory_buffer = memory_buffer
+        self.is_cuda_available = torch.cuda.is_available()
+        self.device = torch.device("cuda" if self.is_cuda_available else "cpu")
+        
 
-        self.actor = Actor(self.state_dim, self.action_dim, self.action_v_max, self.action_w_max)
-        self.target_actor = Actor(self.state_dim, self.action_dim, self.action_v_max, self.action_w_max)
+        self.actor = Actor(self.state_dim, self.action_dim, self.action_v_max, self.action_w_max).to(self.device)
+        self.target_actor = Actor(self.state_dim, self.action_dim, self.action_v_max, self.action_w_max).to(self.device)
         self.actor_optimizer = torch.optim.Adam(self.actor.parameters(), config.ACTOR_LR)
 
-        self.critic = Critic(self.state_dim, self.action_dim)
-        self.target_critic = Critic(self.state_dim, self.action_dim)
+        self.critic = Critic(self.state_dim, self.action_dim).to(self.device)
+        self.target_critic = Critic(self.state_dim, self.action_dim).to(self.device)
         self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), config.CRITIC_LR)
         
         self.pub_qvalue = rospy.Publisher('qvalue', Float32, queue_size=5)
@@ -46,70 +50,80 @@ class DDPGAgent:
         self.path_save = path_save
         self.path_load = path_load
         self.critic_loss = -1
+        self.actor_loss = -1
 
         hard_update(self.target_actor, self.actor)
         hard_update(self.target_critic, self.critic)
 
     def get_action(self, state):
-        state = torch.from_numpy(state)
+        state = torch.from_numpy(state).to(self.device)
         action = self.actor.forward(state).detach()
-        return action.data.numpy()
+        return action.data.cpu().numpy()
 
     def learn(self):
         s_sample, a_sample, r_sample, new_s_sample, done_sample = self.memory_buffer.sample(config.BATCH_SIZE)
 
-        s_sample = torch.from_numpy(s_sample)
-        a_sample = torch.from_numpy(a_sample)
-        r_sample = torch.from_numpy(r_sample)
-        new_s_sample = torch.from_numpy(new_s_sample)
-        done_sample = torch.from_numpy(done_sample)
+        s_sample = torch.from_numpy(s_sample).to(self.device)
+        a_sample = torch.from_numpy(a_sample).to(self.device)
+        r_sample = torch.from_numpy(r_sample).to(self.device)
+        new_s_sample = torch.from_numpy(new_s_sample).to(self.device)
+        done_sample = torch.from_numpy(done_sample).to(self.device)
 
-        # -------------- optimize critic
+        # -------------- optimize critic ------------------
+        target_actions = self.target_actor.forward(new_s_sample).detach()
+        target_critic_values = torch.squeeze(self.target_critic.forward(new_s_sample, target_actions).detach())
+        critic_value = torch.squeeze(self.critic.forward(s_sample, a_sample))
 
-        a_target = self.target_actor.forward(new_s_sample).detach()
-        next_value = torch.squeeze(self.target_critic.forward(new_s_sample, a_target).detach())
-        # y_exp = r _ gamma*Q'(s', P'(s'))
-        y_expected = r_sample + (1 - done_sample) * config.GAMMA * next_value
-        # y_pred = Q(s,a)
-        y_predicted = torch.squeeze(self.critic.forward(s_sample, a_sample))
-        # -------Publisher of Vs------
-        self.qvalue = y_predicted.detach()
-        self.pub_qvalue.publish(torch.max(self.qvalue))
-        # print(self.qvalue, torch.max(self.qvalue))
-        # ----------------------------
-        loss_critic = F.smooth_l1_loss(y_predicted, y_expected)
-        self.critic_loss = loss_critic
-
+        # self.qvalue = critic_value.detach()
+        # self.pub_qvalue.publish(torch.max(self.qvalue))
+        
+        target = r_sample + (1 - done_sample) * config.GAMMA * target_critic_values
+        critic_loss = F.smooth_l1_loss(critic_value, target)
+        
+        self.critic_loss = critic_loss.data.cpu().numpy()
         self.critic_optimizer.zero_grad()
-        loss_critic.backward()
+        critic_loss.backward()
+        
+        for p in self.critic.parameters():
+            print(p.grad.norm())
+        
+        torch.nn.utils.clip_grad_value_(self.critic.parameters(), 1.0)
         self.critic_optimizer.step()
 
-        # ------------ optimize actor
-        pred_a_sample = self.actor.forward(s_sample)
-        loss_actor = -1 * torch.sum(self.critic.forward(s_sample, pred_a_sample))
-
+        # ------------ optimize actor ------------------
+        policy_actions = self.actor.forward(s_sample)
+        actor_loss = -1 * torch.mean(self.critic.forward(s_sample, policy_actions))
+        self.actor_loss = actor_loss.data.cpu().numpy()
         self.actor_optimizer.zero_grad()
-        loss_actor.backward()
+        actor_loss.backward()
+        
+        for p in self.actor.parameters():
+            print(p.grad.norm())
+        
+        torch.nn.utils.clip_grad_value_(self.actor.parameters(), 1.0)
         self.actor_optimizer.step()
         
     def get_critic_loss(self):
         return self.critic_loss
         
+    def get_actor_loss(self):
+        return self.actor_loss
+        
     def update_target(self):
         soft_update(self.target_actor, self.actor, config.TAU)
         soft_update(self.target_critic, self.critic, config.TAU)
 
-    def save_models(self, episode):
-        if not os.path.isdir(f"{self.path_save}/save_agent_{episode}"):
-            os.makedirs(f"{self.path_save}/save_agent_{episode}")
+    def save_models(self, steps):
+        if not os.path.isdir(f"{self.path_save}/save_agent_{steps}"):
+            os.makedirs(f"{self.path_save}/save_agent_{steps}")
         
-        torch.save(self.target_actor.state_dict(), f"{self.path_save}/save_agent_{episode}/actor.pt")
-        torch.save(self.target_critic.state_dict(), f"{self.path_save}/save_agent_{episode}/critic.pt")
+        torch.save(self.target_actor.state_dict(), f"{self.path_save}/save_agent_{steps}/actor.pt")
+        torch.save(self.target_critic.state_dict(), f"{self.path_save}/save_agent_{steps}/critic.pt")
         print('****Models saved***')
 
-    def load_models(self, episode):
-        self.actor.load_state_dict(torch.load(f"{self.path_load}/save_agent_{episode}/actor.pt"))
-        self.critic.load_state_dict(torch.load(f"{self.path_load}/save_agent_{episode}/critic.pt"))
+    def load_models(self, steps):
+        self.actor.load_state_dict(torch.load(f"{self.path_load}/save_agent_{steps}/actor.pt"))
+        self.critic.load_state_dict(torch.load(f"{self.path_load}/save_agent_{steps}/critic.pt"))
         hard_update(self.target_actor, self.actor)
         hard_update(self.target_critic, self.critic)
         print('***Models load***')

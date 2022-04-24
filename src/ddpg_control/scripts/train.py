@@ -101,7 +101,7 @@ def run_training():
                 print(f"{Fore.RED}-------------------- Updating Target Networks ---------------{Style.RESET_ALL}")
                 
             if (steps % config.NETWORK_SAVE_RATE and steps > config.MIN_BUFFER_SIZE == 0):
-                agent.save(steps)
+                agent.save_models(steps)
                 print(f"{Fore.GREEN}-------------------- SAVING THE MODEL ---------------{Style.RESET_ALL}")
                 
             wandb.log({'steps': steps, 'critic_loss': agent.get_critic_loss()}, commit=False)
@@ -125,7 +125,7 @@ def run_training():
         
     print('Completed Training')
     print("saving...")
-    agent.save(steps)
+    agent.save_models(steps)
     print("saved")
 
 if __name__ == '__main__':

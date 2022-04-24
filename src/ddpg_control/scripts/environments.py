@@ -115,10 +115,16 @@ class Env():
         heading = state[-2]
         reward = 0
         distance_rate = (self.past_distance - current_distance) 
-        reward += 200. * distance_rate
+        # print("distance rate ", distance_rate)
+
+        reward += 10.0 * distance_rate
+        # print("distance reward ", reward)
+        
         self.past_distance = current_distance
         
-        reward += pi/2.0 - abs(heading)
+        reward += (pi/4.0 - abs(heading))/10.0
+        # print("heading reward ", (pi/4.0 - abs(heading))/10.0)
+        
 
         a, b, c, d = float('{0:.3f}'.format(self.position.x)), float('{0:.3f}'.format(self.past_position.x)), float('{0:.3f}'.format(self.position.y)), float('{0:.3f}'.format(self.past_position.y))
         if a == b and c == d:
@@ -132,13 +138,13 @@ class Env():
 
         if done:
             rospy.loginfo("Collision!!")
-            reward = -5.0
+            reward = -2.0
             self.pub_cmd_vel.publish(Twist())
 
         if self.get_goalbox:
             rospy.loginfo("Goal!!")
             done = True
-            reward = 10
+            reward = 5.0
             self.pub_cmd_vel.publish(Twist())
             if world:
                 self.goal_x, self.goal_y = self.respawn_goal.getPosition(True, delete=True, running=True)
@@ -157,10 +163,10 @@ class Env():
 
         distance_rate = (self.past_distance - current_distance) 
         if distance_rate > 0:
-            reward = 200.*distance_rate
+            reward = 200.0 * distance_rate
 
         if distance_rate <= 0:
-            reward = -8.
+            reward = -8
 
         self.past_distance = current_distance
 

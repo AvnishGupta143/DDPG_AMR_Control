@@ -1,6 +1,6 @@
 build/
 devel/
-
+src/ddpg_control/scripts/wandb/
 src/ddpg_control/scripts/__pycache__/*
 .idea/DDPG_AMR_Control.iml
 .idea/inspectionProfiles/profiles_settings.xml
