@@ -13,7 +13,7 @@ ACTION_V_MAX = 0.25  # m/s
 ACTION_W_MAX = 0.5  # rad/s
 world = 'world_u'
 
-BATCH_SIZE = 64
+BATCH_SIZE = 128
 ACTOR_LR = 0.001
 CRITIC_LR = 0.005
 GAMMA = 0.99
