@@ -72,7 +72,6 @@ class Actor(nn.Module):
         self.fa3.bias.data.fill_(0.01)
 
     def forward(self, state):
-        print(state.shape)
         x = torch.relu(self.fa1(state))
         x = torch.relu(self.fa2(x))
         action = self.fa3(x)

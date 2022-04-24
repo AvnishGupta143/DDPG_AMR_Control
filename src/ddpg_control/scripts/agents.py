@@ -90,7 +90,7 @@ class DDPGAgent:
         
 
         print(torch.norm(torch.cat([p.grad.view(-1) for p in self.critic.parameters()])))
-        torch.nn.utils.clip_grad_norm_(self.critic.parameters(), 1)
+        torch.nn.utils.clip_grad_norm_(self.critic.parameters(), 2)
         print(torch.norm(torch.cat([p.grad.view(-1) for p in self.critic.parameters()])))
 
         self.critic_optimizer.step()
@@ -98,7 +98,7 @@ class DDPGAgent:
 
         # ------------ optimize actor ------------------
         policy_actions = self.actor.forward(s_sample)
-        actor_loss = -1 * torch.mean(self.critic.forward(s_sample, policy_actions))
+        actor_loss = -1 * torch.sum(self.critic.forward(s_sample, policy_actions))
         self.actor_loss = actor_loss.data.cpu().numpy()
         self.actor_optimizer.zero_grad()
         actor_loss.backward()
@@ -106,7 +106,7 @@ class DDPGAgent:
 
         print(torch.norm(torch.cat([p.grad.view(-1) for p in self.actor.parameters()])))
 
-        torch.nn.utils.clip_grad_norm_(self.actor.parameters(), 1)
+        torch.nn.utils.clip_grad_norm_(self.actor.parameters(), 2)
         
         print(torch.norm(torch.cat([p.grad.view(-1) for p in self.actor.parameters()])))
 

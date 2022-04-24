@@ -218,7 +218,7 @@ class Env():
                 pass
 
         state, done = self.getState(data, past_action)
-        reward, done = self.setRewardContinous(state, done)
+        reward, done = self.setReward(state, done)
         return np.asarray(state), reward, done
 
     def reset(self):

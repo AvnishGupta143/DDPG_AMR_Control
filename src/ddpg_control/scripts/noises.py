@@ -6,7 +6,7 @@ class OUNoise(object):
     # ---Ornstein-Uhlenbeck Noise for action---
     """
 
-    def __init__(self, action_space, mu=0.0, theta=0.15, max_sigma=0.99, min_sigma=0.01, decay_period=600000):
+    def __init__(self, action_space, mu = 0.1, theta = 0.45, max_sigma = 0.99, min_sigma = 0.01, decay_period = 600000):
         self.mu = mu
         self.theta = theta
         self.sigma = max_sigma

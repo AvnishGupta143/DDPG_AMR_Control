@@ -14,8 +14,8 @@ ACTION_W_MAX = 0.5  # rad/s
 world = 'world_u'
 
 BATCH_SIZE = 256
-ACTOR_LR = 0.001
-CRITIC_LR = 0.005
+ACTOR_LR = 0.0001
+CRITIC_LR = 0.0001
 GAMMA = 0.99
 TAU = 0.05
 MODEL = 1
