@@ -25,9 +25,9 @@ from geometry_msgs.msg import Twist, Point, Pose
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
 from std_srvs.srv import Empty
+import config
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
-world = False
-if world:
+if config.STAGE!=1:
     from respawnGoal_custom_worlds import Respawn
 else:
     from respawnGoal import Respawn
