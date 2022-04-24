@@ -24,10 +24,13 @@ import os
 from gazebo_msgs.srv import SpawnModel, DeleteModel
 from gazebo_msgs.msg import ModelStates
 from geometry_msgs.msg import Pose
+from rospkg import RosPack
 
 class Respawn():
     def __init__(self):
-        self.f = open(os.path.expanduser('~') + '/DDPG_AMR_Control/src/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_square/goal_box/model.sdf', 'r')
+        rp = RosPack()
+        
+        self.f = open(rp.get_path('turtlebot3_gazebo') + '/models/turtlebot3_square/goal_box/model.sdf', 'r')
         self.model = self.f.read()
         self.stage = 1 
         self.goal_position = Pose()
