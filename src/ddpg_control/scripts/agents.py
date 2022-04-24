@@ -9,8 +9,11 @@ import torch
 import torch.nn.functional as F
 
 # Local imports
-from models import Actor, Critic
 import config
+if config.MODEL == 0:
+    from models import Actor, Critic
+elif config.MODEL == 1:
+    from models_big import Actor, Critic
 
 # ---Functions to make network updates---#
 
