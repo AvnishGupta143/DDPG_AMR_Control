@@ -187,7 +187,7 @@ class Env():
 
         if self.get_goalbox:
             rospy.loginfo("Goal!!")
-            done=True
+            done = True
             reward = 100.
             self.pub_cmd_vel.publish(Twist())
             self.goal_x, self.goal_y = self.respawn_goal.getPosition(True, delete=True, running=True)
