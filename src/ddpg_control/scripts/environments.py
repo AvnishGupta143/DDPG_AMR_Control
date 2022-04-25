@@ -190,12 +190,7 @@ class Env():
             done=True
             reward = 100.
             self.pub_cmd_vel.publish(Twist())
-            if world:
-                self.goal_x, self.goal_y = self.respawn_goal.getPosition(True, delete=True, running=True)
-                if target_not_movable:
-                    self.reset()
-            else:
-                self.goal_x, self.goal_y = self.respawn_goal.getPosition(True, delete=True)
+            self.goal_x, self.goal_y = self.respawn_goal.getPosition(True, delete=True, running=True)
             self.goal_distance = self.getGoalDistace()
             self.get_goalbox = False
 
