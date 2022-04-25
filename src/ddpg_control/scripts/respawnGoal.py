@@ -77,7 +77,7 @@ class Respawn():
             else:
                 pass
 
-    def getPosition(self, position_check=False, delete=False):
+    def getPosition(self, position_check=False, delete=False, running=False):
         if delete:
             self.deleteModel()
 
