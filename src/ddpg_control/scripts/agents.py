@@ -29,7 +29,7 @@ def hard_update(target, source):
 
 class DDPGAgent:
 
-    def __init__(self, state_dim, action_dim, action_v_max, action_w_max, memory_buffer, path_save = "models", path_load = "models"):
+    def __init__(self, state_dim, action_dim, action_v_max, action_w_max, memory_buffer = None, path_save = "models", path_load = "models"):
         torch.set_default_tensor_type('torch.cuda.FloatTensor' if torch.cuda.is_available() else 'torch.FloatTensor')
         self.state_dim = state_dim
         self.action_dim = action_dim

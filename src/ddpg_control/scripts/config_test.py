@@ -1,0 +1,5 @@
+MODEL_LOAD_PATH = "models_stage_4_fwd_rev"
+STEPS_TO_LOAD = 157000
+EPISODES = 100
+STEPS = 200
+

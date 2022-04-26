@@ -111,15 +111,8 @@ def run_training():
             wandb.log({'steps': steps, 'critic_loss': agent.get_critic_loss(), 'actor_loss': agent.get_actor_loss()}, commit=False)
 
         rewards_all_episodes.append(rewards_current_episode)
-        
-        # episode_reward_msg = Float32()
-        # episode_reward_msg.data = rewards_current_episode
-        # pub_episode_reward.publish(episode_reward_msg)
-        
+                
         avg_reward = np.mean(rewards_all_episodes[max(0, ep - 100):(ep + 1)])
-        # avg_reward_msg = Float32()
-        # avg_reward_msg.data = avg_reward
-        # pub_average_reward.publish(avg_reward_msg)
         
         wandb.log({"episodes": ep,
                    "episode_reward": rewards_current_episode,
@@ -134,7 +127,5 @@ def run_training():
 
 if __name__ == '__main__':
     rospy.init_node('ddpg_train')
-    pub_episode_reward = rospy.Publisher('episode_reward', Float32, queue_size=5)
-    pub_average_reward = rospy.Publisher('average_reward', Float32, queue_size=5)
     init_plotting()
     run_training()
