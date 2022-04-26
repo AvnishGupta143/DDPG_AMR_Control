@@ -27,12 +27,15 @@ from nav_msgs.msg import Odometry
 from std_srvs.srv import Empty
 import config
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
-if config.STAGE!=1:
+
+if config.STAGE != 1:
     from respawnGoal_custom_worlds import Respawn
 else:
     from respawnGoal import Respawn
 import copy
+
 target_not_movable = False
+
 
 class Env():
     def __init__(self, action_dim=2):
@@ -51,7 +54,7 @@ class Env():
         self.past_distance = 0.
         self.stopped = 0
         self.action_dim = action_dim
-        #Keys CTRL + c will stop script
+        # Keys CTRL + c will stop script
         rospy.on_shutdown(self.shutdown)
 
     def shutdown(self):
@@ -96,14 +99,13 @@ class Env():
             else:
                 scan_range.append(scan.ranges[i])
 
-
         if min_range > min(scan_range) > 0:
             done = True
 
         for pa in past_action:
             scan_range.append(pa)
 
-        current_distance = round(math.hypot(self.goal_x - self.position.x, self.goal_y - self.position.y),2)
+        current_distance = round(math.hypot(self.goal_x - self.position.x, self.goal_y - self.position.y), 2)
 
         if current_distance < 0.15:
             self.get_goalbox = True
