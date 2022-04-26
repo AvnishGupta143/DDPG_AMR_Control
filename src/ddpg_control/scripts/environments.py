@@ -25,17 +25,14 @@ from geometry_msgs.msg import Twist, Point, Pose
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
 from std_srvs.srv import Empty
+import config
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
-
-world = False
-if world:
+if config.STAGE!=1:
     from respawnGoal_custom_worlds import Respawn
 else:
     from respawnGoal import Respawn
 import copy
-
 target_not_movable = False
-
 
 class Env():
     def __init__(self, action_dim=2):
@@ -54,7 +51,7 @@ class Env():
         self.past_distance = 0.
         self.stopped = 0
         self.action_dim = action_dim
-        # Keys CTRL + c will stop script
+        #Keys CTRL + c will stop script
         rospy.on_shutdown(self.shutdown)
 
     def shutdown(self):
@@ -99,13 +96,14 @@ class Env():
             else:
                 scan_range.append(scan.ranges[i])
 
+
         if min_range > min(scan_range) > 0:
             done = True
 
         for pa in past_action:
             scan_range.append(pa)
 
-        current_distance = round(math.hypot(self.goal_x - self.position.x, self.goal_y - self.position.y), 2)
+        current_distance = round(math.hypot(self.goal_x - self.position.x, self.goal_y - self.position.y),2)
 
         if current_distance < 0.15:
             self.get_goalbox = True
@@ -208,12 +206,7 @@ class Env():
             done = True
             reward = 100.
             self.pub_cmd_vel.publish(Twist())
-            if world:
-                self.goal_x, self.goal_y = self.respawn_goal.getPosition(True, delete=True, running=True)
-                if target_not_movable:
-                    self.reset()
-            else:
-                self.goal_x, self.goal_y = self.respawn_goal.getPosition(True, delete=True)
+            self.goal_x, self.goal_y = self.respawn_goal.getPosition(True, delete=True, running=True)
             self.goal_distance = self.getGoalDistace()
             self.get_goalbox = False
 

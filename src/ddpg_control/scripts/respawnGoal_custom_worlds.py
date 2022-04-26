@@ -24,17 +24,16 @@ import os
 from gazebo_msgs.srv import SpawnModel, DeleteModel
 from gazebo_msgs.msg import ModelStates
 from geometry_msgs.msg import Pose
+import config
+from rospkg import RosPack
 
 class Respawn():
     def __init__(self):
-        self.modelPath = os.path.dirname(os.path.realpath(__file__))
-        self.modelPath = self.modelPath.replace('project/src',
-                                                'turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_square/goal_box/model.sdf')
-        self.f = open(self.modelPath, 'r')
+        rp = RosPack()
+
+        self.f = open(rp.get_path('turtlebot3_gazebo') + '/models/turtlebot3_square/goal_box/model.sdf', 'r')
         self.model = self.f.read()
-        #stage 1 = TCC_world_obst
-        #stage 2 = TCC_world_U
-        self.stage = rospy.get_param('/stage_number')
+        self.stage = config.STAGE
         self.goal_position = Pose()
         if self.stage == 1:  
             self.init_goal_x = 0.975166
@@ -45,6 +44,9 @@ class Respawn():
         if self.stage == 3:  
             self.init_goal_x = 2.25
             self.init_goal_y = -2.40
+        if self.stage == 4:  
+            self.init_goal_x = -0.5
+            self.init_goal_y = -0.5            
         self.goal_position.position.x = self.init_goal_x
         self.goal_position.position.y = self.init_goal_y
         self.modelName = 'goal'
@@ -127,7 +129,7 @@ class Respawn():
                 # self.goal_position.position.y = goal_y_list[self.index]
 
         if self.stage == 2:
-            while position_check:
+            while position_check: 
                 goal_x_list = [1.053979, 0.725346, 1.759492, 2.477302, 2.665976, 2.576926, 2.175901, 1.882009, 2.547499, 1.838564, 2.637267, 1.535967, 0.443954, 0.335799, 0.263102]
                 goal_y_list = [-1.122977, -0.332471, -0.291238, -0.330033, -0.734655, -1.328935, -1.411599, -1.803747, -2.157146, -2.260181, -2.668954, -2.546023, -2.570976, -2.100776, -1.021737]
 
@@ -159,6 +161,15 @@ class Respawn():
                 self.goal_position.position.x = 2.25
                 self.goal_position.position.y = -2.40
 
+        if self.stage == 4:
+            goal_x_list = [1.0, 0.5, 1.7, 0.7, 0.9, -1.0, -1.0, -2.0, -1.5, -0.5, -0.6,-0.7,-2.0, -2.0, 1, 2, 2, 1]
+            goal_y_list = [1.0, 1.5, 1.3, 0.7, 1.8, -1.0, -2.0, -1.0, -2.0, -2.0, 0.4, 0.5, 1.0, 2.0, -2, -2, -1, 0]
+            
+            aux_index = random.randrange(0, len(goal_x_list))
+            self.goal_position.position.x = goal_x_list[aux_index]+random.uniform(-0.1,0.1) 
+            self.goal_position.position.y = goal_y_list[aux_index]+random.uniform(-0.1,0.1) 
+
+
         time.sleep(0.5)
         self.respawnModel()
 
@@ -166,4 +177,6 @@ class Respawn():
         self.last_goal_y = self.goal_position.position.y
 
         return self.goal_position.position.x, self.goal_position.position.y
+
+        
 

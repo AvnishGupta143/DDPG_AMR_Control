@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import numpy as np
+import config
 
 EPS = 0.003
 
@@ -76,9 +77,15 @@ class Actor(nn.Module):
         x = torch.relu(self.fa2(x))
         action = self.fa3(x)
         if state.shape <= torch.Size([self.state_dim]):
-            action[0] = torch.sigmoid(action[0]) * self.action_v_max
+            if config.ALLOW_REVERSE:
+                action[0] = torch.tanh(action[0]) * self.action_v_max
+            else:
+                action[0] = torch.sigmoid(action[0]) * self.action_v_max
             action[1] = torch.tanh(action[1]) * self.action_w_max
         else:
-            action[:, 0] = torch.sigmoid(action[:, 0]) * self.action_v_max
+            if config.ALLOW_REVERSE:
+                action[0] = torch.tanh(action[:, 0]) * self.action_v_max
+            else:
+                action[:, 0] = torch.sigmoid(action[:, 0]) * self.action_v_max
             action[:, 1] = torch.tanh(action[:, 1]) * self.action_w_max
         return action
