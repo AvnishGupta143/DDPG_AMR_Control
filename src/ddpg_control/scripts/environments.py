@@ -186,7 +186,8 @@ class Env():
         self.past_distance = current_distance
 
         # Collision logic
-        # If it is found in the same position for 20 time frames, then it is declared to be collided and the episode ends.
+        # If it is found in the same position for 20 time frames,
+        # then it is declared to be collided and the episode ends.
         a, b, c, d = float('{0:.3f}'.format(self.position.x)), float('{0:.3f}'.format(self.past_position.x)), float(
             '{0:.3f}'.format(self.position.y)), float('{0:.3f}'.format(self.past_position.y))
         if a == b and c == d:
@@ -203,11 +204,14 @@ class Env():
             reward = -10.
             self.pub_cmd_vel.publish(Twist())
 
+        # If goal is reached
         if self.get_goalbox:
             rospy.loginfo("Goal!!")
             done = True
             reward = 100.
             self.pub_cmd_vel.publish(Twist())
+
+            # Reset the goal in the environment
             self.goal_x, self.goal_y = self.respawn_goal.getPosition(True, delete=True, running=True)
             self.goal_distance = self.getGoalDistace()
             self.get_goalbox = False
