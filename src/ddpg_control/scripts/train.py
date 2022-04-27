@@ -48,7 +48,12 @@ def run_training():
                         config.ACTION_DIMENSION, 
                         config.ACTION_V_MAX,
                         config.ACTION_W_MAX, 
-                        memory_buffer)
+                        memory_buffer,
+                        path_load = config.MODEL_LOAD_PATH)
+    
+    if LOAD_PRETRAINED:
+        agent.load_models(config.STEPS_TO_LOAD)
+        print("--------------- Loaded Model ------------------")
     
     noise = OUNoise(config.ACTION_DIMENSION, 
                     max_sigma = 0.1, 

@@ -169,6 +169,13 @@ class Respawn():
             self.goal_position.position.x = goal_x_list[aux_index]+random.uniform(-0.1,0.1) 
             self.goal_position.position.y = goal_y_list[aux_index]+random.uniform(-0.1,0.1) 
 
+        if self.stage == 5:
+            goal_x_list = [-1.0, -4.0, -6.5, -6.0, -6.5, -6.5, -6.5, 1.0, 1.0, 4.0, 6.0, 6.0, 6.0, 6.0]
+            goal_y_list = [5.0, 4.0, 0.0, -3.0, -2.0, 2.0, 4.0, 4.0, 2.0, 1.0, 1.0, 4.0, -1.0, -4.5]
+            
+            aux_index = random.randrange(0, len(goal_x_list))
+            self.goal_position.position.x = goal_x_list[aux_index]+random.uniform(-0.1,0.1) 
+            self.goal_position.position.y = goal_y_list[aux_index]+random.uniform(-0.1,0.1) 
 
         time.sleep(0.5)
         self.respawnModel()
