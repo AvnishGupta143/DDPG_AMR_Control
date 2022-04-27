@@ -51,7 +51,7 @@ def run_training():
                         memory_buffer,
                         path_load = config.MODEL_LOAD_PATH)
     
-    if LOAD_PRETRAINED:
+    if config.LOAD_PRETRAINED:
         agent.load_models(config.STEPS_TO_LOAD)
         print("--------------- Loaded Model ------------------")
     
