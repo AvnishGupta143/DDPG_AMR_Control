@@ -79,7 +79,7 @@ def run_training():
             action = agent.get_action(state)
             
             N = copy.deepcopy(noise.get_noise(t = steps))
-            N[0] = N[0] * config.ACTION_V_MAX / 2
+            N[0] = N[0] * config.ACTION_V_MAX / 4.0
             N[1] = N[1] * config.ACTION_W_MAX
             if config.ALLOW_REVERSE:
                 action[0] = np.clip(action[0] + N[0], -config.ACTION_V_MAX, config.ACTION_V_MAX)

@@ -9,6 +9,10 @@ tance and heading) are merged together as a 94-dimensional input vector. The las
 Action Space: The 2-dimensional action of every time step includes the angular and the linear velocities of the differential mobile robot. To constrain the range of angular velocity in (−0.5, 0.5), a hyperbolic tangent function (tanh) is used as the activation function. Moreover, the range of the linear velocity is constrained in (0, 0.5) through a sigmoid function for forward motion and the range of the linear velocity is constrained in (−0.5, 0.5)
 through a tanh function for backward motion. Considering the real dynamics of the robot we clip the angular velocity at 1 radian per second and linear velocity at 0.5 meter per second.
 
+The below gif shows the algorithm tested in a complex environment. The red box is the goal and agent has learned to reach the goal without any stored map.
+
+<img src="Demo/test.gif"/>
+
 ## Dependencies for Running Locally
 * ROS Noetic
   * All OSes: [click here for installation instructions](http://wiki.ros.org/Installation/Ubuntu)
@@ -37,7 +41,7 @@ source devel/setup.bash
 export TURTLEBOT3_MODEL = burger
 roslaunch turtlebot3_gazebo turtlebot3_stage_1.launch 
 ```
-<img src="env_images/RL1.png"/>
+<img src="Docs/env_images/RL1.png"/>
 
 ## Run Simulation for stage 4
 ```
@@ -45,7 +49,7 @@ source devel/setup.bash
 export TURTLEBOT3_MODEL = burger
 roslaunch turtlebot3_gazebo turtlebot3_stage_4.launch 
 ```
-<img src="env_images/RL2.png"/>
+<img src="Docs/env_images/RL2.png"/>
 
 ## Run Training
 

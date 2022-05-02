@@ -47,6 +47,9 @@ class Respawn():
         if self.stage == 4:  
             self.init_goal_x = -0.5
             self.init_goal_y = -0.5            
+        if self.stage == 5:  
+            self.init_goal_x = -0.5
+            self.init_goal_y = -0.5
         self.goal_position.position.x = self.init_goal_x
         self.goal_position.position.y = self.init_goal_y
         self.modelName = 'goal'
